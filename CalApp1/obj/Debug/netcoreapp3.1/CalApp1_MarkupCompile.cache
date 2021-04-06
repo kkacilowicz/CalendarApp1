@@ -1,5 +1,5 @@
 ﻿CalApp1
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\App.xaml
 11407045341
 
-9-48248343
+7-467033472
 213-412309532
 MainWindow.xaml;
 
-False
+True
 

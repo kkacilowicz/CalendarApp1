@@ -1,0 +1,5 @@
+D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\obj\Debug\netcoreapp3.1\CalApp1.csprojAssemblyReference.cache
+D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\obj\Debug\netcoreapp3.1\CalApp1_MarkupCompile.cache
+D:\Studia\Semestr6\JavaNet\L\P01\CalApp1\obj\Debug\netcoreapp3.1\CalApp1_MarkupCompile.lref

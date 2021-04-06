@@ -14,14 +14,11 @@ namespace Interactive_calendar.Entities
         public DbSet<Calendar> Calendars { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Habit> Habits { get; set; }
-        public DbSet<User> Users { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .Property(U => U.Name) //kolumna Name 
-                .IsRequired() //jest wymagana
-                .HasMaxLength(25); //długość kolumny name
+        
 
 
             modelBuilder.Entity<Habit>()
