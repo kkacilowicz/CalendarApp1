@@ -8,7 +8,8 @@ namespace Interactive_calendar.Entities
     public class Calendar
     {
         public int Id { get; set; }
-        public virtual User User { get; set; }
         public virtual List<Event> Events { get; set; }
+
+        public string Name { get; set; }
     }
 }

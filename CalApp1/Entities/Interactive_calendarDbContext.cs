@@ -10,7 +10,7 @@ namespace Interactive_calendar.Entities
     public class Interactive_calendarDbContext : DbContext
     {
         private string _connectionString =
-            "Server=(localdb)\\mssqllocaldb;Database=Interactive-calendarDb;Trusted_Connection=True;";
+            "Server=.;Database=Interactive-calendarDb;Trusted_Connection=True;";
         public DbSet<Calendar> Calendars { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Habit> Habits { get; set; }

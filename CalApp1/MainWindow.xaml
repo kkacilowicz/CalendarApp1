@@ -36,7 +36,13 @@
 
         </Grid>
 
-        <Calendar Grid.Row="1" Grid.ColumnSpan="1" Margin="0,0,0,70" Background="#3E3544" Foreground="White" Height="330" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Viewbox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Stretch="Fill" StretchDirection="UpOnly">
+            <Calendar  Background="#3E3544"
+                       Foreground="White"
+                       BorderBrush="{x:Null}"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"/>
+        </Viewbox>
 
         <Button
             x:Name="btnToDo"
