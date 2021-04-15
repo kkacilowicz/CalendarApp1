@@ -11,7 +11,7 @@ namespace Interactive_calendar.Entities
     {
         private string _connectionString =
             "Server=.;Database=Interactive-calendarDb;Trusted_Connection=True;";
-        public DbSet<Calendar> Calendars { get; set; }
+        public DbSet<User> Calendars { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Habit> Habits { get; set; }
       

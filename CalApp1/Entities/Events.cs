@@ -12,6 +12,6 @@ namespace Interactive_calendar.Entities
         public string Description { get; set; }
         public string Date { get; set; }
         public int CalendarId { get; set; }
-        public virtual Calendar Calendar { get; set; }
+        public virtual User Calendar { get; set; }
     }
 }
