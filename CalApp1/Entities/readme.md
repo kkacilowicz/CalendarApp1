@@ -1,0 +1,1 @@
+﻿Tutaj trzymamy nasze encje. One reprezentują konkretne atrybuty w bazie danych

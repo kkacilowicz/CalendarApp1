@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CalApp1.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Interactive_calendar.Entities
@@ -10,20 +11,20 @@ namespace Interactive_calendar.Entities
     public class Interactive_calendarDbContext : DbContext
     {
         private string _connectionString =
-            "Server=.;Database=Interactive-calendarDb;Trusted_Connection=True;";
-        public DbSet<User> Calendars { get; set; }
+            "Server=(localdb)\\mssqllocaldb;Database=Interactive-calendarDb;Trusted_Connection=True;";
+        public DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Habit> Habits { get; set; }
-      
+        public DbSet<HabitEvent> HabitEvents { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         
-
-
             modelBuilder.Entity<Habit>()
                 .Property(H => H.Name)
-                .IsRequired(); //kolumna Name jest wymagana
+                .IsRequired(); 
 
             modelBuilder.Entity<Event>()
                 .Property(E => E.Name)

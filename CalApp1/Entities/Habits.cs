@@ -12,9 +12,9 @@ namespace Interactive_calendar.Entities
         [Required]
         [MaxLength(60)]
         public string Name { get; set; }
-        public string Amount { get; set; }
-        public string SuccessRate { get; set; }
-        
+        public int AmountPlannedInLastMonth { get; set; }
+        public int AmountDoneInLastMonth { get; set; }
+        public int SuccessRate { get; set; }
 
     }
 }

@@ -4,14 +4,16 @@ using Interactive_calendar.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CalApp1.Migrations
 {
     [DbContext(typeof(Interactive_calendarDbContext))]
-    partial class Interactive_calendarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210415211522_StructureEtc")]
+    partial class StructureEtc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
