@@ -4,18 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalendarApp1"
+        xmlns:viewmodels="clr-namespace:CalApp1.ViewModels"
+        xmlns:views="clr-namespace:CalApp1.Views"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="#403A44"
         WindowStyle="None"
         Title="MainWindow" Height="800" Width="1400">
 
+    <Window.Resources>
+        <DataTemplate x:Name="eventsViewTemplate" DataType="{x:Type viewmodels:EventsViewModel}">
+            <views:Events DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="redScreenViewTemplate" DataType="{x:Type viewmodels:RedScreenModel}">
+            <views:RedScreen DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="500"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -23,7 +31,7 @@
             <RowDefinition Height="400"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#3E3544" Grid.ColumnSpan="3" >
+        <Grid Background="#3E3544" Grid.ColumnSpan="2" Margin="0,0,-990,5" >
 
             <TextBlock 
                 Text="CalApp"
@@ -37,52 +45,48 @@
         </Grid>
 
         <Viewbox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Stretch="Fill" StretchDirection="UpOnly">
-            <Calendar  Background="#3E3544"
+            <Calendar x:Name="calendarMenu"  Background="#3E3544"
                        Foreground="White"
                        BorderBrush="{x:Null}"
                        VerticalContentAlignment="Center"
-                       HorizontalContentAlignment="Center"/>
+                       HorizontalContentAlignment="Center" SelectedDatesChanged="calendarMenu_SelectedDatesChanged"/>
         </Viewbox>
 
         <Button
             x:Name="btnToDo"
             Click="btnToDo_Click"
             Grid.Column="0"
-            Grid.Row="1" Margin="0,397,0,-86"
-            Height="90"
-            Width="400"
+            Grid.Row="1" Margin="0,397,0,-87"
             Background="#3E3544" 
             Foreground="White"
             Content="To do list"
             FontSize="22"
             />
-        <Button
+        <Button x:Name="eventsMenuBtn"
             Grid.Column="0"
-            Grid.Row="1" Margin="0,487,0,-176"
-            Height="90"
-            Width="400"
+            Grid.Row="1" Margin="0,487,0,-177"
             Background="#3E3544" 
             Foreground="White"
             Content="Events"
-            FontSize="22"/>
-        <Button
+            FontSize="22" Click="events_btnClicked"/>
+        <Button x:Name="habitCreatorBtn"
             Grid.Column="0"
-            Grid.Row="1" Margin="0,578,0,-267"
-            Height="90"
-            Width="400"
+            Grid.Row="1" Margin="0,578,0,-268"
             Background="#3E3544" 
             Foreground="White"
             Content="Habit creator"
-            FontSize="22"/>
-        <Button
+            FontSize="22" Click="habitCreatorBtn_Click"/>
+        <Button x:Name="habitStatistics"
             Grid.Column="0"
-            Grid.Row="1" Margin="0,669,0,-358"
-            Height="90"
-            Width="400"
+            Grid.Row="1" Margin="0,669,0,-359"
             Background="#3E3544" 
             Foreground="White"
             Content="Habit statistics"
-            FontSize="22"/>
+            FontSize="22" Click="habitStatistics_Click"/>
+        
+        <Canvas Grid.Row="1" Margin="449,10,-990,-350">
+            <ContentControl Content="{Binding}" Height="740" Width="931"/>
+        </Canvas>
 
     </Grid>
 </Window>
