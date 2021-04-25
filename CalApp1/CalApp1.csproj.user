@@ -5,7 +5,10 @@
     <Compile Update="Views\Events.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\RedScreen.xaml.cs">
+    <Compile Update="Views\Habits.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HabitsStatistics.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -13,7 +16,10 @@
     <Page Update="Views\Events.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\RedScreen.xaml">
+    <Page Update="Views\Habits.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HabitsStatistics.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

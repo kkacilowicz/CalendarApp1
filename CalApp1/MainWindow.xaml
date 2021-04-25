@@ -9,15 +9,18 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="#403A44"
-        WindowStyle="None"
-        Title="MainWindow" Height="800" Width="1400">
+        Title="CalApp" Height="800" Width="1400">
 
     <Window.Resources>
         <DataTemplate x:Name="eventsViewTemplate" DataType="{x:Type viewmodels:EventsViewModel}">
             <views:Events DataContext="{Binding}"/>
+		</DataTemplate>
+        <!--W znaczniku Windows.Resources należy stworzyć znacznik DataTemplate dla każdego widoku który może być tu wyświetlany, np DataTemplate eventsViewTemplate odpowiada za powiązanie modelu widoku EventsViewModel z widokiem Events. Jak w MainView utworzymy sobie obiekt typu EventsViewModel i przypiszemy go do DataContext to uruchomi nam View o nazwie Events, pole DataContext będzie Binding czyli wiązane dynamicznie, na podstawie tego jaki konstruktor wywołamy -->
+        <DataTemplate x:Name="habitsViewTemplate" DataType="{x:Type viewmodels:HabitsViewModel}">
+            <views:Habits DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="redScreenViewTemplate" DataType="{x:Type viewmodels:RedScreenModel}">
-            <views:RedScreen DataContext="{Binding}"/>
+	    <DataTemplate x:Name="habitsStatisticsViewTemplate" DataType="{x:Type viewmodels:HabitsStatisticsViewModel}">
+            <views:HabitsStatistics DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
 
@@ -27,22 +30,10 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="400"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="#3E3544" Grid.ColumnSpan="2" Margin="0,0,-990,5" >
-
-            <TextBlock 
-                Text="CalApp"
-                Foreground="White"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                FontSize="25"
-                FontWeight="Medium"
-            />
-
-        </Grid>
+        
 
         <Viewbox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Stretch="Fill" StretchDirection="UpOnly">
             <Calendar x:Name="calendarMenu"  Background="#3E3544"
@@ -52,16 +43,6 @@
                        HorizontalContentAlignment="Center" SelectedDatesChanged="calendarMenu_SelectedDatesChanged"/>
         </Viewbox>
 
-        <Button
-            x:Name="btnToDo"
-            Click="btnToDo_Click"
-            Grid.Column="0"
-            Grid.Row="1" Margin="0,397,0,-87"
-            Background="#3E3544" 
-            Foreground="White"
-            Content="To do list"
-            FontSize="22"
-            />
         <Button x:Name="eventsMenuBtn"
             Grid.Column="0"
             Grid.Row="1" Margin="0,487,0,-177"
@@ -85,8 +66,8 @@
             FontSize="22" Click="habitStatistics_Click"/>
         
         <Canvas Grid.Row="1" Margin="449,10,-990,-350">
-            <ContentControl Content="{Binding}" Height="740" Width="931"/>
-        </Canvas>
+            <ContentControl Content="{Binding}" Height="740" Width="920"/>
+        </Canvas> <!--pole Content jest Binding, bo to również jest wiązane dynamicznie-->
 
     </Grid>
 </Window>

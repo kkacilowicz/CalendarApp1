@@ -32,10 +32,10 @@ namespace CalendarApp1
         {
             InitializeComponent();
         }
-
+        /*
         private void btnToDo_Click(object sender, RoutedEventArgs e)
         {
-
+            //sprawdzenie czy po kliknięciu ToDoList doda się task do bazy danych
             var newEvent = new Event()
             {
                 Name = "nowy evencik",
@@ -49,11 +49,11 @@ namespace CalendarApp1
             //context.SaveChanges();
            
         }
-
+        */
         private void events_btnClicked(object sender, RoutedEventArgs e)
         {
-            DataContext = new EventsViewModel();
-            
+            DataContext = new EventsViewModel();//do kontextu aplikacji okna MainWindow przypisuję model EventsViewModel, dzięki czemu znaczniku Canvas w xamlu wyświetla się View wybranego modelu
+
 
         }
 
@@ -77,7 +77,7 @@ namespace CalendarApp1
 
         private void habitCreatorBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new RedScreenModel();
+            
         }
     }
 }
