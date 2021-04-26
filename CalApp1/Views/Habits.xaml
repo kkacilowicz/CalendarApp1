@@ -5,8 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalApp1.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="740" d:DesignWidth="931">
+    <Grid Background="#3E3544" Height="740" VerticalAlignment="Center" HorizontalAlignment="Left" Width="931
+          ">
+        <TextBlock HorizontalAlignment="Left" Margin="31,74,0,0" Text="Habit Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="143" FontSize="16"/>
+        <TextBox x:Name="habitNameTextBox" HorizontalAlignment="Left" Margin="31,108,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Height="26"/>
+        <Button x:Name="addHabitButton" Content="Add Habit" HorizontalAlignment="Left" Margin="31,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.059,0.117" Height="24" Width="167" Click="addHabitButton_Click"/>
+        <DataGrid ItemsSource="{Binding}" x:Name="habitsGridView" Margin="499,251,38,10"/>
+        <Calendar x:Name="habitCalendar" SelectionMode="MultipleRange" HorizontalAlignment="Left" Margin="228,82,0,0" VerticalAlignment="Top" Width="185"/>
+        <ComboBox x:Name="habitsComboBox" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="41,271,0,0" VerticalAlignment="Top" Width="351" Height="21">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                        <TextBlock Text=" - "/>
+                        <TextBlock Text="{Binding Path=Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="weeksAheadTextBox" HorizontalAlignment="Left" Margin="41,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="addHabitEventBtn" Content="Add Habit Events" HorizontalAlignment="Left" Margin="41,350,0,0" VerticalAlignment="Top" Width="120" Click="addHabitEventBtn_Click"/>
+        <Button x:Name="showHabitEventsBtn" Content="Show All Habit Events" HorizontalAlignment="Left" Margin="187,350,0,0" VerticalAlignment="Top" Width="134" Click="showHabitEventsBtn_Click"/>
+        <Button x:Name="showSpecifiedEventsBtn" Content="Show Specified Events" HorizontalAlignment="Left" Margin="339,350,0,0" VerticalAlignment="Top" Width="126" Click="showSpecifiedEventsBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="20"><Run Language="pl-pl" Text="Weeks ahead for this  habit"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="41,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"><Run Language="pl-pl" Text="Habits"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
+        <Button x:Name="deleteHabitBtn" Content="Delete Habit" HorizontalAlignment="Left" Margin="31,171,0,0" VerticalAlignment="Top" Width="167" Click="deleteHabitBtn_Click" Height="24"/>
+
+
+
     </Grid>
 </UserControl>

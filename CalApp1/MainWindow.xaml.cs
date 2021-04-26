@@ -1,4 +1,5 @@
-﻿using CalApp1.ViewModels;
+﻿using CalApp1.Entities;
+using CalApp1.ViewModels;
 using GalaSoft.MvvmLight.Messaging;
 using Interactive_calendar.Entities;
 using System;
@@ -32,10 +33,10 @@ namespace CalendarApp1
         {
             InitializeComponent();
         }
-        /*
+
         private void btnToDo_Click(object sender, RoutedEventArgs e)
         {
-            //sprawdzenie czy po kliknięciu ToDoList doda się task do bazy danych
+
             var newEvent = new Event()
             {
                 Name = "nowy evencik",
@@ -49,35 +50,40 @@ namespace CalendarApp1
             //context.SaveChanges();
            
         }
-        */
+
         private void events_btnClicked(object sender, RoutedEventArgs e)
         {
-            DataContext = new EventsViewModel();//do kontextu aplikacji okna MainWindow przypisuję model EventsViewModel, dzięki czemu znaczniku Canvas w xamlu wyświetla się View wybranego modelu
+            DataContext = new EventsViewModel(); //do kontextu aplikacji okna MainWindow przypisuję model EventsViewModel, dzięki czemu znaczniku Canvas w xamlu wyświetla się View wybranego modelu
 
 
         }
 
+        //funkcja wywoływana kiedy zmieni się data na kalendarzu, czyli jak klikniemy na jakiś dzień
         private void calendarMenu_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-             EventsViewModel calendarEvent = new EventsViewModel();
-             Messenger.Default.Send<DateTime>(calendarMenu.SelectedDate.Value);
-             Messenger.Default.Send<string>("test");
-             DataContext = calendarEvent;
-             
-
+            EventsViewModel calendarEvent = new EventsViewModel();//po naciśnięciu wybranego dnia w kalendarzu tworzę obiekt typu EventsViewModel, chcę odpalić zakładkę events z UI
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value});//wysyłam do okna które się zaraz odpali parametry które chcę wysłać, tutaj akurat wysyłam datę która została kliknięta w kalendarzu <CalendarDate>, w nawiasie jest jej wartość
+                                                                                                                    
+            DataContext = calendarEvent;//aby pokazać to okno przypisuję wyżej stworzony model do tego "okienka" DataContext
+                                        //wtedy w MainWindow.xaml jest sprawdzane jaka data przyszła i tam jest tworzony widok danego dnia za pomocą
 
         }
 
         private void habitStatistics_Click(object sender, RoutedEventArgs e)
         {
-            EventsViewModel calendarEvent = new EventsViewModel();
-            Messenger.Default.Send<DateTime>(new DateTime(2021,5,2,8,30,52));
-            DataContext = calendarEvent;
+           
         }
 
         private void habitCreatorBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            DataContext = new HabitsViewModel();
+        }
+
+        private void calendarMenu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EventsViewModel calendarEvent = new EventsViewModel();
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value });
+            DataContext = calendarEvent;
         }
     }
 }

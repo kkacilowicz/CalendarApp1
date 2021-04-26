@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CalApp1.Entities
+{
+    public class CalendarDate
+    {
+        public DateTime CalendarDay { get; set; }
+
+    }
+
+    
+}

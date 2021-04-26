@@ -21,6 +21,7 @@
         <TextBox x:Name="userIdTextBox" HorizontalAlignment="Left" Margin="40,258,0,0" Text="UserId" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="addNewEventButton" Content="Add" HorizontalAlignment="Left" Margin="40,302,0,0" VerticalAlignment="Top" Width="67" Click="btnAddNewEvent_Click"/>
         <DataGrid ItemsSource="{Binding}" x:Name="eventsDataGrid" Grid.Column="1" Margin="10,33,0,20" HorizontalAlignment="Left" Width="640" Initialized="eventsDataGrid_Initialized"/>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="120,302,0,0" VerticalAlignment="Top" Width="56" Click="deleteButton_Click"/>
 
 
     </Grid>

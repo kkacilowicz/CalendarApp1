@@ -14,12 +14,13 @@
     <Window.Resources>
         <DataTemplate x:Name="eventsViewTemplate" DataType="{x:Type viewmodels:EventsViewModel}">
             <views:Events DataContext="{Binding}"/>
-		</DataTemplate>
+            <!--kiedy wywołujemy widok Events to w rzeczywistości wywoływany jest konstruktor klasy Events.xaml.cs public Events(){}, a w nim musi być domyślnie InitializeComponent();, które wyświetla ten widok-->
+        </DataTemplate>
         <!--W znaczniku Windows.Resources należy stworzyć znacznik DataTemplate dla każdego widoku który może być tu wyświetlany, np DataTemplate eventsViewTemplate odpowiada za powiązanie modelu widoku EventsViewModel z widokiem Events. Jak w MainView utworzymy sobie obiekt typu EventsViewModel i przypiszemy go do DataContext to uruchomi nam View o nazwie Events, pole DataContext będzie Binding czyli wiązane dynamicznie, na podstawie tego jaki konstruktor wywołamy -->
         <DataTemplate x:Name="habitsViewTemplate" DataType="{x:Type viewmodels:HabitsViewModel}">
             <views:Habits DataContext="{Binding}"/>
         </DataTemplate>
-	    <DataTemplate x:Name="habitsStatisticsViewTemplate" DataType="{x:Type viewmodels:HabitsStatisticsViewModel}">
+        <DataTemplate x:Name="habitsStatisticsViewTemplate" DataType="{x:Type viewmodels:HabitsStatisticsViewModel}">
             <views:HabitsStatistics DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
@@ -33,41 +34,44 @@
             <RowDefinition Height="400"/>
         </Grid.RowDefinitions>
 
-        
 
         <Viewbox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Stretch="Fill" StretchDirection="UpOnly">
             <Calendar x:Name="calendarMenu"  Background="#3E3544"
                        Foreground="White"
                        BorderBrush="{x:Null}"
                        VerticalContentAlignment="Center"
-                       HorizontalContentAlignment="Center" SelectedDatesChanged="calendarMenu_SelectedDatesChanged"/>
+                       HorizontalContentAlignment="Center" MouseDoubleClick="calendarMenu_MouseDoubleClick"/>
         </Viewbox>
 
-        <Button x:Name="eventsMenuBtn"
-            Grid.Column="0"
-            Grid.Row="1" Margin="0,487,0,-177"
-            Background="#3E3544" 
-            Foreground="White"
-            Content="Events"
-            FontSize="22" Click="events_btnClicked"/>
-        <Button x:Name="habitCreatorBtn"
-            Grid.Column="0"
-            Grid.Row="1" Margin="0,578,0,-268"
-            Background="#3E3544" 
-            Foreground="White"
-            Content="Habit creator"
-            FontSize="22" Click="habitCreatorBtn_Click"/>
-        <Button x:Name="habitStatistics"
-            Grid.Column="0"
-            Grid.Row="1" Margin="0,669,0,-359"
-            Background="#3E3544" 
-            Foreground="White"
-            Content="Habit statistics"
-            FontSize="22" Click="habitStatistics_Click"/>
+        <StackPanel Margin="-1,393,7,-385">
+            <Button 
+                x:Name="eventsMenuBtn"
+                Background="#3E3544" 
+                Foreground="White"
+                Content="Events"
+                Height="129"
+                FontSize="22" Click="events_btnClicked"
+                />
+            <Button
+                x:Name="habitCreatorBtn"
+                Background="#3E3544" 
+                Foreground="White"
+                Content="Habit creator"
+                Height="129"
+                FontSize="22" Click="habitCreatorBtn_Click"/>
+            <Button 
+                x:Name="habitStatisticsBtn"
+                Background="#3E3544" 
+                Foreground="White"
+                Content="Habit statistics"
+                Height="129"
+                FontSize="22" Click="habitStatistics_Click"/>
+
+        </StackPanel>
         
         <Canvas Grid.Row="1" Margin="449,10,-990,-350">
-            <ContentControl Content="{Binding}" Height="740" Width="920"/>
-        </Canvas> <!--pole Content jest Binding, bo to również jest wiązane dynamicznie-->
+            <ContentControl Content="{Binding}" Height="740" Width="931"/>
+        </Canvas>
 
     </Grid>
 </Window>
