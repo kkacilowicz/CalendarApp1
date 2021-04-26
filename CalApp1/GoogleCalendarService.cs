@@ -9,10 +9,10 @@ using System.Linq;
 
 namespace CalApp1.Services
 {
-    /*
+    
     class GoogleCalendarService
     {
-        static void MyProgram(string[] args)
+        public static void Initialize()
         {
             string jsonFile = "calapp1-a06384fe507e.json";
             string calendarId = @"calapp553@gmail.com";
@@ -124,5 +124,5 @@ namespace CalApp1.Services
                 }
              };
     }
-    */
+    
 }

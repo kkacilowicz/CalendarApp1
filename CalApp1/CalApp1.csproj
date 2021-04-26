@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Services\calapp1-a06384fe507e.json">
+    <None Update="calapp1-a06384fe507e.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

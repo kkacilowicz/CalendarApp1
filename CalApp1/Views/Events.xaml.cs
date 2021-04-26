@@ -28,7 +28,18 @@ namespace CalApp1.Views
     {
         
         public Events()//klasa obsługująca widok Events
-        {           
+        {
+            /*
+            using (var dbContext = new Interactive_calendarDbContext())
+            {
+                User tempUser = new User()
+                {
+                    Email = "Ania"
+                };
+                dbContext.Users.Add(tempUser);
+                dbContext.SaveChanges();
+            }
+            */
             Messenger.Default.Register<CalendarDate>(this, this.ShowCalendarDayEvents); //odebranie danych (klikniętej daty) z MainWindow
                                                                                         //this jest chyba od kontekstu, nie jestem pewna, ale musi tutaj być
                                                                                         //evDate to parametr który przyszedł (typu DateTime)

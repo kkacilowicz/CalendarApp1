@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CalApp1.Services;
 using CalendarApp1;
 
 namespace CalApp1
@@ -16,6 +17,8 @@ namespace CalApp1
     {
         void App_Startup(object sender, StartupEventArgs e)
         {
+          
+            GoogleCalendarService.Initialize();
             // Create main application window, starting minimized if specified
             MainWindow mainWindow = new MainWindow();
        
