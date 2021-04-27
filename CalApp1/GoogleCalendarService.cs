@@ -257,27 +257,7 @@ namespace CalApp1.Services
         }
 
 
-        static List<Event> DB =
-             new List<Event>() {
-                new Event(){
-                    Id = "eventid" + 1,
-                    Summary = "Google I/O 2015",
-                    Location = "800 Howard St., San Francisco, CA 94103",
-                    Description = "A chance to hear more about Google's developer products.",
-                    Start = new EventDateTime()
-                    {
-                        DateTime = new DateTime(2021, 01, 13, 15, 30, 0),
-                        TimeZone = "Europe/Warsaw",
-                    },
-                    End = new EventDateTime()
-                    {
-                        DateTime = new DateTime(2021, 01, 14, 15, 30, 0),
-                        TimeZone = "Europe/Warsaw",
-                    },
-                     Recurrence = new List<string> { "RRULE:FREQ=DAILY;COUNT=2" },
 
-                }
-             };
     }
     
 }

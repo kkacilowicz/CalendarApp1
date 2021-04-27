@@ -1,4 +1,5 @@
 ﻿using CalApp1.Entities;
+using CalApp1.Services;
 using CalApp1.ViewModels;
 using GalaSoft.MvvmLight.Messaging;
 using Interactive_calendar.Entities;
@@ -26,9 +27,10 @@ namespace CalApp1.Views
     /// </summary>
     public partial class Events : UserControl
     {
-        
+        private GoogleCalendarService _googleCalendarService;
         public Events()//klasa obsługująca widok Events
         {
+            _googleCalendarService = new GoogleCalendarService();
             /*
            using (var dbContext = new Interactive_calendarDbContext())
            {
@@ -74,6 +76,7 @@ namespace CalApp1.Views
             {//wszystkie operacje na bazach danych warto robić w using, w nawiasie jest to co powinno się otworzyć, ponieważ to co tu otworzymy zamknie się na końcu tego usingu i nie trzeba pamiętać o jej zamykaniu
                 try //try catcha używamy żeby zabezpieczyć się przed tym że coś nie zostało wpisane w te labelki poniżej
                 {
+  
                     var newEvent = new Event()//dodawanie nowych elementów do bazy danych
                     //tworzę nowy obiekt modelu z folderu Entifies, tutaj Event. W C# można używać zamiast konstruktora takiego bloku
 
@@ -82,12 +85,27 @@ namespace CalApp1.Views
                         Description = descriptionTextBox.Text,
                         DateStart = startDatePicker.SelectedDate.Value,//zwraca datę typu DateTime
                         DateEnd = endDatePicker.SelectedDate.Value,
-                        //UserId = Int32.Parse(userIdTextBox.Text),//string z TextBoxa parsuję na int
+                        UserId = 1,//Int32.Parse(userIdTextBox.Text),//string z TextBoxa parsuję na int
 
                     };
                     context.Events.Add(newEvent);//wywołujemy context czyli zmienną za której pomocą będziemy dostawać się do bazy danych, następnie kolekcję Events, pod tą nazwą są wszystkie Eventy, na tej kolekcji wywołuję funkcję Add() która doda nowy element który przyjmuje w argumencie
                     context.SaveChanges();//to taki commit jakby, context - czyli nasza baza danych, wywoływana na niej metoda SaveChanges
-                    MessageBox.Show("New Event Added!");
+                    MessageBox.Show("New Event Added to Db!");
+                    
+                    var AddEventtoGoogleCalendar = _googleCalendarService.InsertEvent(newEvent.Name, 
+                        newEvent.Description, newEvent.DateStart, newEvent.DateEnd);
+
+                    if (AddEventtoGoogleCalendar)
+                    {
+                        MessageBox.Show("New Event Added to Google Calendar API!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Couldn't load event to Google Calendar API ", "Something went wrong");
+                    }
+
+                    
+
                 }
                 catch (Exception ex)//łapanie wyjątków że jak któreś pole dodawania Eventów nie zostanie uzupełnione to wyświetli się komunikat żeby sprawdzić
                 {
