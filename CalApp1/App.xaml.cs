@@ -18,8 +18,7 @@ namespace CalApp1
         void App_Startup(object sender, StartupEventArgs e)
         {
           
-            GoogleCalendarService.Initialize();
-            // Create main application window, starting minimized if specified
+            // Create main application window,
             MainWindow mainWindow = new MainWindow();
        
             mainWindow.Show();

@@ -1,4 +1,5 @@
 ﻿using CalApp1.Entities;
+using CalApp1.Services;
 using CalApp1.ViewModels;
 using GalaSoft.MvvmLight.Messaging;
 using Interactive_calendar.Entities;
@@ -26,7 +27,7 @@ namespace CalApp1.Views
     /// </summary>
     public partial class Events : UserControl
     {
-        
+        private GoogleCalendarService _googleCalendarService;
         public Events()//klasa obsługująca widok Events
         {
             /*
@@ -90,6 +91,19 @@ namespace CalApp1.Views
                     MessageBox.Show("Check all the forms if they are filled properly ", "Something went wrong");
                 }
             }
+            /* tutaj się wywala, trochę nie umiem dobrać się do tych danych w fromularzu i wyrzuca NullReference Exception
+            var AddToGoogleCalendar = _googleCalendarService.InsertEvent(nameTextBox.Text, descriptionTextBox.Text,
+                startDatePicker.SelectedDate.Value, endDatePicker.SelectedDate.Value);
+
+            if (!AddToGoogleCalendar)
+            {
+                MessageBox.Show("Unfortunately adding event to Google Calendar went wrong");
+            }
+            else
+            {
+                MessageBox.Show("Successfully added to Google Calendar");
+            }
+            */
 
 
         }//DataGrid to nasza tabela do wyświetlania danych (tutaj Eventów)
