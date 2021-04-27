@@ -55,6 +55,13 @@ namespace CalApp1.Services
 
         public bool InsertEvent(string Name, string Description, DateTime DateStart, DateTime DateEnd)
         {
+
+            if (Name == null || Description == null)
+                return false;
+
+            if (DateTime.Compare(DateStart, DateEnd) >= 0)
+                return false;
+
             var calendarId = GetCalendarId();
 
             var service = GetService();
@@ -111,8 +118,16 @@ namespace CalApp1.Services
             if (HowMany <= 0)
                 return false;
 
+            if (Name == null || Description == null)
+                return false;
+
+            
             if (!(HowOften == "DAILY" || HowOften == "WEEKLY" || HowOften == "MONTHLY" || HowOften == "YEARLY"))
                 return false;
+            
+            if (DateTime.Compare(DateStart, DateEnd) >= 0)
+                return false;
+
 
             String Reccurence = String.Format("RRULE:FREQ={0};COUNT={1}", HowOften, HowMany);
 

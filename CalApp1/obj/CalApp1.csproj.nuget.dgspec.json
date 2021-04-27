@@ -71,6 +71,10 @@
             "MvvmLightLibs": {
               "target": "Package",
               "version": "[5.4.1.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
             }
           },
           "imports": [
