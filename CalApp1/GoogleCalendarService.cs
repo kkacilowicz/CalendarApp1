@@ -9,9 +9,14 @@ using System.Linq;
 
 namespace CalApp1.Services
 {
-    
+    /// <summary>
+    /// Class which services the interaction between the User of the App and Google Calendar API
+    /// </summary>
     public class GoogleCalendarService
     {
+        /// <summary>
+        /// The method gives credential of this Google Calendar Service Account
+        /// </summary>
         private static ServiceAccountCredential GetCredential()
         {
             string[] Scopes = { CalendarService.Scope.Calendar };
@@ -33,13 +38,18 @@ namespace CalApp1.Services
             return credential;
 
         }
+        /// <summary>
+        /// The method gives google calendar Id
+        /// </summary>
         private static string GetCalendarId()
         {
             string calendarId = @"calapp553@gmail.com";
 
             return calendarId;
         }
-
+        /// <summary>
+        /// The method gives Google Calendar Service
+        /// </summary>
         private static CalendarService GetService()
         {
 
@@ -53,6 +63,13 @@ namespace CalApp1.Services
             return service;
         }
 
+        /// <summary>
+        /// Function to send all the details and create a Google Calendar event
+        /// </summary>
+        /// <param name="Name"> - contains info about the event summary</param>
+        /// <param name="Description"> - contains info about the event description</param>
+        /// <param name="DateStart"> - contains info about the event Start Time of the event</param>
+        /// <param name="DateEnd"> - contains info about the event End Time of the event </param>
         public bool InsertEvent(string Name, string Description, DateTime DateStart, DateTime DateEnd)
         {
 
@@ -111,7 +128,17 @@ namespace CalApp1.Services
             return true;
         }
 
-
+        /// <summary>
+        /// Function to send all the details and create a Google Calendar event
+        /// </summary>
+        /// <param name="Name"> - contains info about the event summary</param>
+        /// <param name="Description"> - contains info about the event description</param>
+        /// <param name="DateStart"> - contains info about the event Start Time of the event</param>
+        /// <param name="DateEnd"> - contains info about the event End Time of the event </param>
+        /// /// <param name="HowOften"> - contains info abbout the reccurence type, weekly, daily etc
+        /// It accepts only "DAILY", "MONTHLY", "YEARLY", "WEEKLY"</param>
+        /// /// <param name="HowMany"> - contains info about how many times it should occur
+        /// for ex "DAILY", 2 - event will occur in 2 consecutive days and never happen again</param>
         public bool InsertReccuringEvent(string Name, string Description, DateTime DateStart, DateTime DateEnd,
             string HowOften, int HowMany)
         {
@@ -186,7 +213,7 @@ namespace CalApp1.Services
         }
 
 
-
+        /*
         public static void Initialize()
         {
             
@@ -253,9 +280,9 @@ namespace CalApp1.Services
 
                 }
             }
-            */
+            
         }
-
+        */
 
 
     }

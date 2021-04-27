@@ -44,6 +44,12 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
+            "Doxygen": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.8.14, )"
+            },
             "Google.APIs.Calendar.v3": {
               "target": "Package",
               "version": "[1.51.0.2291, )"

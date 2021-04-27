@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CalApp1</name>
+    </assembly>
+    <members>
+        <member name="T:CalApp1.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:CalApp1.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:CalApp1.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:CalApp1.Views.Events">
+            <summary>
+            Logika interakcji dla klasy Events.xaml
+            </summary>
+            <summary>
+            Events
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Events.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalApp1.Views.Habits">
+            <summary>
+            Logika interakcji dla klasy Habits.xaml
+            </summary>
+            <summary>
+            Habits
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalApp1.Views.HabitsStatistics">
+            <summary>
+            Logika interakcji dla klasy HabitsStatistics.xaml
+            </summary>
+            <summary>
+            HabitsStatistics
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.HabitsStatistics.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalApp1.Views.TodayActivities">
+            <summary>
+            Logika interakcji dla klasy TodayActivities.xaml
+            </summary>
+            <summary>
+            TodayActivities
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.TodayActivities.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:CalendarApp1.MainWindow">
+            <summary>
+            Logika interakcji dla klasy MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
