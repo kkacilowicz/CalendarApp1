@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="CalApp1.Views.TodayActivities"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalApp1.Views"
+             mc:Ignorable="d"
+             Background="#403A44"
+             d:DesignHeight="740" d:DesignWidth="931">
+    <Grid  Background="#403A44" Margin="0,10,0,0">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="habitsDataGrid" Margin="0,205,496,38" FontSize="20">
+            <!--ustawienie AutoGenerateColumns na False powoduje że kolumny nie są generowane z tego obiektu (Entities) który przyjdzie, ItemsSource ={Binding} żeby do DataSource wrzucać customowe listy -->
+
+            <!--Zdefiniowane kolumny-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="250"/><!--Zbindingowano żeby wyświetlało się tylko pole Name-->
+                <DataGridCheckBoxColumn x:Name="DoneStatusColumn" Header="Done" Binding="{Binding Path=Done}" Width="180"/><!--Nazwa DoneStatusColumn jest potrzebna bo na jej podstawie będziemy rozpoznawać które są zrobione, Binding itemów wchodzących do DataGrida ale konkretnie do pola o nazwie Done-->
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <!--Do eventów analogicznie jak wyżej tylko bez Done-->
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="eventsDataGrid" Margin="465,205,0,38" FontSize="20">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="250"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="151,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Height="41" FontSize="24" Foreground="White"><Run Language="pl-pl" Text="Habit Events"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="662,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="72" FontSize="24" Foreground="White"><Run Language="pl-pl" Text="Events"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
+        <Button x:Name="confirmDoneBtn" Content="Confirm Done" HorizontalAlignment="Left" Margin="338,167,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="confirmDoneBtn_Click"/>
+
+    </Grid>
+</UserControl>

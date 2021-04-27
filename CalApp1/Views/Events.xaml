@@ -4,24 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalApp1.Views"
-             mc:Ignorable="d" Width="1410" Height="806">
-    <Grid Background="#3E3544"  x:Name="eventsGrid" Height="802" VerticalAlignment="Center" HorizontalAlignment="Left" Width="1400">
+             mc:Ignorable="d" Width="931" Height="740">
+    <Grid Background="#3E3544"  x:Name="eventsGrid" Height="740" VerticalAlignment="Center" HorizontalAlignment="Left" Width="931
+          ">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="650.297"/>
         </Grid.ColumnDefinitions>
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="40,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Name"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
-        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Margin="40,49,0,0" Text="&#xD;&#xA;" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="29"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Margin="40,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Height="29"/>
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="40,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Height="22"><Run Language="pl-pl" Text="Description"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="40,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="56"/>
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="40,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"><Run Language="pl-pl" Text="Start Date"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
         <DatePicker x:Name="startDatePicker" HorizontalAlignment="Left" Margin="40,217,0,0" VerticalAlignment="Top" Width="155"/>
         <DatePicker x:Name="endDatePicker" HorizontalAlignment="Left" Margin="195,217,0,0" VerticalAlignment="Top" Width="150"/>
         <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="200,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="End Date"/></TextBlock>
-        <TextBox x:Name="userIdTextBox" HorizontalAlignment="Left" Margin="40,258,0,0" Text="UserId" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        
         <Button x:Name="addNewEventButton" Content="Add" HorizontalAlignment="Left" Margin="40,302,0,0" VerticalAlignment="Top" Width="67" Click="btnAddNewEvent_Click"/>
-        <DataGrid ItemsSource="{Binding}" x:Name="eventsDataGrid" Grid.Column="1" Margin="10,33,0,20" HorizontalAlignment="Left" Width="640" Initialized="eventsDataGrid_Initialized"/>
+        <DataGrid ItemsSource="{Binding}" x:Name="eventsDataGrid" Grid.Column="1" Margin="57,38,0,38" HorizontalAlignment="Left" Width="448" Initialized="eventsDataGrid_Initialized"/>
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Left" Margin="120,302,0,0" VerticalAlignment="Top" Width="56" Click="deleteButton_Click"/>
+        <Calendar x:Name="eventsCalendar" HorizontalAlignment="Left" Margin="74,370,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="specifiedEventsBtn" Content="Show specified Events" HorizontalAlignment="Left" Margin="200,302,0,0" VerticalAlignment="Top" Width="145" Click="specifiedEventsBtn_Click"/>
+        <Button x:Name="allEventsBtn" Content="Show All Events" HorizontalAlignment="Left" Margin="200,327,0,0" VerticalAlignment="Top" Width="145" Height="21" Click="allEventsBtn_Click"/>
 
 
     </Grid>

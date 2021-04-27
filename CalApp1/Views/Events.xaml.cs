@@ -1,5 +1,4 @@
 ﻿using CalApp1.Entities;
-using CalApp1.Services;
 using CalApp1.ViewModels;
 using GalaSoft.MvvmLight.Messaging;
 using Interactive_calendar.Entities;
@@ -27,41 +26,44 @@ namespace CalApp1.Views
     /// </summary>
     public partial class Events : UserControl
     {
-        private GoogleCalendarService _googleCalendarService;
+        
         public Events()//klasa obsługująca widok Events
         {
             /*
-            using (var dbContext = new Interactive_calendarDbContext())
-            {
-                User tempUser = new User()
-                {
-                    Email = "Ania"
-                };
-                dbContext.Users.Add(tempUser);
-                dbContext.SaveChanges();
-            }
-            */
-            Messenger.Default.Register<CalendarDate>(this, this.ShowCalendarDayEvents); //odebranie danych (klikniętej daty) z MainWindow
-                                                                                        //this jest chyba od kontekstu, nie jestem pewna, ale musi tutaj być
-                                                                                        //evDate to parametr który przyszedł (typu DateTime)
-                                                                                        //=> oznacza że to coś podobnego jak wyrażenia lambda w Javie, czyli ten poniższy blok jest wywołany w argumencie tej funkcji
-                                                                                        //dostaję daną (tutaj evDate) i mogę ją przerobić i dopiero funkcja się wykonuje
+           using (var dbContext = new Interactive_calendarDbContext())
+           {
+               User tempUser = new User()
+               {
+                   Email = "Ania"
+               };
+               dbContext.Users.Add(tempUser);
+               dbContext.SaveChanges();
+           }
+           */ 
+
+            //Messenger.Default.Register<CalendarDate>(this, this.ShowCalendarDayEvents); //odebranie danych (klikniętej daty) z MainWindow
+            //this jest chyba od kontekstu, nie jestem pewna, ale musi tutaj być
+            //evDate to parametr który przyszedł (typu DateTime)
+            //=> oznacza że to coś podobnego jak wyrażenia lambda w Javie, czyli ten poniższy blok jest wywołany w argumencie tej funkcji
+            //dostaję daną (tutaj evDate) i mogę ją przerobić i dopiero funkcja się wykonuje
             InitializeComponent();//wyświetla widok, ale w tym konstruktorze Events można też coś doimplementować żeby wyświetlało się przy starcie widoku, np żeby już ładowały się tam dane
         }
 
-        public void ShowCalendarDayEvents(CalendarDate calDay)
+        public void ShowCalendarDayEvents(CalendarDate calDay)//funkcja jako parametr ma dostać obiekt który przesyłamy czyli ten calDay klasy CalendarDate
         {
             ObservableCollection<Event> evCollection; //lista typu ObservableCollection, bo ten typ jest zalecany do DataGridów, przechowująca typ Event
             using (var dbContext = new Interactive_calendarDbContext()) //using otwierający bazę danych, na której będziemy działać 
             {
                MessageBox.Show("loaded data: " + calDay.CalendarDay);//sprawdzanie czy data przychodzi z MainWindow
                 var query = dbContext.Events //tworzę quekę sqlową typu var, bierzemy instancję bazy danych, chcemy działać na naszej kolekcji Eventów
-                                .Where(s => DateTime.Compare(s.DateStart, calDay.CalendarDay) == 0);//to nasz condition statement, co chcemy wyłuskać na podstawie czego
-                                                                                                    //argument s to pojedynczy event z całej kolekcji eventów(z racji że .Where zostało wywołane na całej kolekcji to wnioskuje ono że s jest jednym eventem), po strzałce znajduje się porównanie dat przy pomocy metody Compare, porównuję datę startową eventu wpisanego w Events UI z tą datą która przyszła z kalendarza w MainWindow, ta funkcja zwraca 0 wtedy, kiedy te daty są sobie równe
-                                                                                                    //w rezultacie ta querka powinna mi zwrócić te wszystkie eventy, w których data startowa jest taka sama jak kliknięta data w kalendarzu
-                evCollection = new ObservableCollection<Event>(query);//do wyżej zdefiniowanej kolekcji w której będziemy przetrzymywać wyniki, przypisujemynowo tworzoną za pomoca konstruktora kolekcję ObservableCollection typu Event i jako argument przyjmuje ona querkę
-                                                                      //zwracana w ten sposów lista obiektów jest przypisywana do evCollection
+                                .Where(s => DateTime.Compare(s.DateStart, calDay.CalendarDay) == 0);//to nasz condition statement, co chcemy wyłuskać 
+                //argument s to pojedynczy event z całej kolekcji eventów(z racji że .Where zostało wywołane na całej kolekcji to wnioskuje ono że s jest jednym
+                //eventem), po strzałce znajduje się porównanie dat przy pomocy metody Compare, porównuję datę startową eventu wpisanego w Events UI z tą datą która
+                //przyszła z kalendarza w MainWindow, ta funkcja zwraca 0 wtedy, kiedy te daty są sobie równe w rezultacie ta querka powinna mi zwrócić te wszystkie eventy, w których data startowa jest taka sama jak kliknięta data w kalendarzu
+
+                evCollection = new ObservableCollection<Event>(query);//do wyżej zdefiniowanej kolekcji w której będziemy przetrzymywać wyniki, przypisujemy nowo tworzoną za pomoca konstruktora kolekcję ObservableCollection typu Event i jako argument przyjmuje ona querkę zwracana w ten sposów lista obiektów jest przypisywana do evCollection
                 eventsDataGrid.ItemsSource = evCollection; //do DataContext eventsDataGrid przypisujemy listę, aby wyświetlić tą listę
+                //ItemsSource działa lepiej niż DataContext w tym miejscu, choć można korzystać z obu
 
             }
         }
@@ -80,83 +82,77 @@ namespace CalApp1.Views
                         Description = descriptionTextBox.Text,
                         DateStart = startDatePicker.SelectedDate.Value,//zwraca datę typu DateTime
                         DateEnd = endDatePicker.SelectedDate.Value,
-                        UserId = Int32.Parse(userIdTextBox.Text),//string z TextBoxa parsuję na int
+                        //UserId = Int32.Parse(userIdTextBox.Text),//string z TextBoxa parsuję na int
 
                     };
                     context.Events.Add(newEvent);//wywołujemy context czyli zmienną za której pomocą będziemy dostawać się do bazy danych, następnie kolekcję Events, pod tą nazwą są wszystkie Eventy, na tej kolekcji wywołuję funkcję Add() która doda nowy element który przyjmuje w argumencie
                     context.SaveChanges();//to taki commit jakby, context - czyli nasza baza danych, wywoływana na niej metoda SaveChanges
+                    MessageBox.Show("New Event Added!");
                 }
                 catch (Exception ex)//łapanie wyjątków że jak któreś pole dodawania Eventów nie zostanie uzupełnione to wyświetli się komunikat żeby sprawdzić
                 {
                     MessageBox.Show("Check all the forms if they are filled properly ", "Something went wrong");
                 }
             }
-            /* tutaj się wywala, trochę nie umiem dobrać się do tych danych w fromularzu i wyrzuca NullReference Exception
-            var AddToGoogleCalendar = _googleCalendarService.InsertEvent(nameTextBox.Text, descriptionTextBox.Text,
-                startDatePicker.SelectedDate.Value, endDatePicker.SelectedDate.Value);
-
-            if (!AddToGoogleCalendar)
-            {
-                MessageBox.Show("Unfortunately adding event to Google Calendar went wrong");
-            }
-            else
-            {
-                MessageBox.Show("Successfully added to Google Calendar");
-            }
-            */
 
 
         }//DataGrid to nasza tabela do wyświetlania danych (tutaj Eventów)
         private void eventsDataGrid_Initialized(object sender, EventArgs e)
         {
-            /*ObservableCollection<Event> evCollection; 
-            using (var dbContext = new Interactive_calendarDbContext())
-            {
-                Messenger.Default.Register<DateTime>(this, (dateT) =>
-                {
-                    //DateTime today = DateTime.Today;
-                    var query = dbContext.Events
-                        .Where(s => s.DateStart == dateT);
-
-                    evCollection = new ObservableCollection<Event>(query);
-                    eventsDataGrid.DataContext = evCollection;
-
-
-                });
-            }*/
+            
             
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Event takenEvent = (Event)eventsDataGrid.SelectedItem;
-            using (var dbContext = new Interactive_calendarDbContext())
+            try
             {
-                dbContext.Events.Remove(takenEvent);
-                dbContext.SaveChanges();
+                Event takenEvent = (Event)eventsDataGrid.SelectedItem;
+                using (var dbContext = new Interactive_calendarDbContext())
+                {
+                    dbContext.Events.Remove(takenEvent);
+                    dbContext.SaveChanges();
+                }
+                eventsDataGrid.ItemsSource = GetSpcifiedEvents(takenEvent.DateStart);
             }
+            catch(Exception exc)
+            {
+                MessageBox.Show("No event selected!");
+            }
+           
 
         }
 
-        /* private void eventsDataGrid_Loaded(object sender, RoutedEventArgs e)
-         {
-             ObservableCollection<Event> evCollection;
-             using (var dbContext = new Interactive_calendarDbContext())
-             { 
-                 Messenger.Default.Register<DateTime>(this, (evDate) =>
-                 {
-                     MessageBox.Show("loaded data: " + evDate);
-                     var query = dbContext.Events
-                                 .Where(s => DateTime.Compare(s.DateStart,evDate) == 0);
-
-                     evCollection = new ObservableCollection<Event>(query);
-                     eventsDataGrid.DataContext = evCollection;
-                 });
-
-             }
+        private void specifiedEventsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            eventsDataGrid.ItemsSource = GetSpcifiedEvents(eventsCalendar.SelectedDate.Value);
+        }
 
 
+        private ObservableCollection<Event> GetSpcifiedEvents(DateTime startDate)
+        {
+            ObservableCollection<Event> events;
+            using (var dbContext = new Interactive_calendarDbContext())
+            {
+                var query = dbContext.Events
+                    .Where(e => e.DateStart == startDate);
+                events = new ObservableCollection<Event>(query);
+            }
+            return events;
+        }
 
-         }*/
+        private void allEventsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<Event> events;
+            using (var dbContext = new Interactive_calendarDbContext())
+            {
+                var query = dbContext.Events;
+                events = new ObservableCollection<Event>(query);
+            }
+            eventsDataGrid.ItemsSource = events;
+
+        }
+
+     
     }
 }

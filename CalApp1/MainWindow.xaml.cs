@@ -26,30 +26,14 @@ namespace CalendarApp1
     public partial class MainWindow : Window
     {
 
-        //private readonly Interactive_calendarDbContext _context;
-        Interactive_calendarDbContext context;
 
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new TodayActivitiesViewModel();
+
         }
 
-        private void btnToDo_Click(object sender, RoutedEventArgs e)
-        {
-
-            var newEvent = new Event()
-            {
-                Name = "nowy evencik",
-                Description = "opis",
-                DateStart = new DateTime(2021, 5, 1, 8, 30, 52),
-                DateEnd = new DateTime(2021, 5, 2, 8, 30, 52),
-                UserId = 1,
-                
-            };
-            //context.Events.Add(newEvent);
-            //context.SaveChanges();
-           
-        }
 
         private void events_btnClicked(object sender, RoutedEventArgs e)
         {
@@ -79,11 +63,11 @@ namespace CalendarApp1
             DataContext = new HabitsViewModel();
         }
 
-        private void calendarMenu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void calendarMenu_MouseDoubleClick(object sender, MouseButtonEventArgs e)//taka sama funkcja jak wcześniejsze selected dates changed, tylko działa po podwójnum kliknięcu na jakąś datę i wyświela aktywności na dzień dzisiejszy
         {
-            EventsViewModel calendarEvent = new EventsViewModel();
-            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value });
-            DataContext = calendarEvent;
+            TodayActivitiesViewModel todayActivitiesModel = new TodayActivitiesViewModel();//stworzony jest ViewModel do dzisiejszych nawyków i wydarzeń
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value });//tutaj jest wywoływany jest ten Messanger i w nim przesyłam ten obiekt typu CalendarDate w nawiasie jest to co chcę przesłać, czyli tworzę nowy obiekt i w to pole CalendarDate wrzucam tą naszą datę wybraną z kalendarza
+            DataContext = todayActivitiesModel;// ładuję DataContext aby pojawił się widok TodayActivities
         }
     }
 }
