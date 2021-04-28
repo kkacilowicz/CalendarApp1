@@ -22,6 +22,55 @@
             Application Entry Point.
             </summary>
         </member>
+        <member name="T:CalApp1.Services.GoogleCalendarService">
+            <summary>
+            Class which services the interaction between the User of the App and Google Calendar API
+            </summary>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.GetCredential">
+            <summary>
+            The method gives credential of this Google Calendar Service Account
+            </summary>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.GetCalendarId">
+            <summary>
+            The method gives google calendar Id
+            </summary>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.GetService">
+            <summary>
+            The method gives Google Calendar Service
+            </summary>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.InsertEvent(System.String,System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Function to send all the details and create a Google Calendar event
+            </summary>
+            <param name="Name"> - contains info about the event summary</param>
+            <param name="Description"> - contains info about the event description</param>
+            <param name="DateStart"> - contains info about the event Start Time of the event</param>
+            <param name="DateEnd"> - contains info about the event End Time of the event </param>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.InsertReccuringEvent(System.String,System.String,System.DateTime,System.DateTime,System.String,System.Int32)">
+            <summary>
+            Function to send all the details and create a Google Calendar event
+            </summary>
+            <param name="Name"> - contains info about the event summary</param>
+            <param name="Description"> - contains info about the event description</param>
+            <param name="DateStart"> - contains info about the event Start Time of the event</param>
+            <param name="DateEnd"> - contains info about the event End Time of the event </param>
+            /// <param name="HowOften"> - contains info abbout the reccurence type, weekly, daily etc
+            It accepts only "DAILY", "MONTHLY", "YEARLY", "WEEKLY"</param>
+            /// <param name="HowMany"> - contains info about how many times it should occur
+            for ex "DAILY", 2 - event will occur in 2 consecutive days and never happen again</param>
+        </member>
+        <member name="M:CalApp1.Services.GoogleCalendarService.DeleteEvent(System.String,System.DateTime)">
+            <summary>
+            Function to get event by name and date from API and remove it
+            </summary>
+            <param name="Name"> - contains info about the event summary</param>
+            <param name="WhenStarts"> - contains info about when the event happens</param>
+        </member>
         <member name="T:CalApp1.Views.Events">
             <summary>
             Logika interakcji dla klasy Events.xaml
@@ -55,6 +104,28 @@
             <summary>
             HabitsStatistics
             </summary>
+        </member>
+        <member name="M:CalApp1.Views.HabitsStatistics.#ctor">
+            <summary>
+            NonParametric constructor to initialize  
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.HabitsStatistics.returnHabits">
+            <summary>
+            Returns a collection of all Habit types from database  
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.HabitsStatistics.GetDoneHabitEventsFromLastMonth(System.Int32)">
+            <summary>
+            Returns all HabitEvent with Done status occurences in last month  
+            </summary>
+            <param name="HabitId"> - contains info about the HabitType </param>
+        </member>
+        <member name="M:CalApp1.Views.HabitsStatistics.GetUndoneHabitEventsFromLastMonth(System.Int32)">
+            <summary>
+            Returns all HabitEvent with UnDone status occurences in last month  
+            </summary>
+            <param name="HabitId"> - contains info about the HabitType </param>
         </member>
         <member name="M:CalApp1.Views.HabitsStatistics.InitializeComponent">
             <summary>

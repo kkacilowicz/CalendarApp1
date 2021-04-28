@@ -25,7 +25,7 @@ namespace CalendarApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-
+            
 
         public MainWindow()
         {
@@ -55,7 +55,7 @@ namespace CalendarApp1
 
         private void habitStatistics_Click(object sender, RoutedEventArgs e)
         {
-           
+            DataContext = new HabitsStatisticsViewModel();
         }
 
         private void habitCreatorBtn_Click(object sender, RoutedEventArgs e)

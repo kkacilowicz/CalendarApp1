@@ -203,6 +203,15 @@ namespace CalApp1Tests
             Assert.AreEqual(false, _googleCalendarService.InsertReccuringEvent(Name, Description, DateStart,
                 DateEnd, HowOften, HowMany));
         }
-        
+        /// <summary>
+        ///  Test to check function reaction if arguments are null
+        /// </summary>
+        [TestCase(null, null)]
+        [TestCase("lala", null)]
+        public void DeleteEvent_NullError(string Name, DateTime DateStart)
+        {
+            Assert.AreEqual(false, _googleCalendarService.DeleteEvent(Name, DateStart));
+        }
+
     }
 }

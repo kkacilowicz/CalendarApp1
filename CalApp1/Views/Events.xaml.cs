@@ -132,6 +132,22 @@ namespace CalApp1.Views
                     dbContext.SaveChanges();
                 }
                 eventsDataGrid.ItemsSource = GetSpcifiedEvents(takenEvent.DateStart);
+
+                MessageBox.Show("Event deleted from Db!");
+
+                var DeleteEventtoGoogleCalendar = _googleCalendarService.DeleteEvent(takenEvent.Name,
+                    takenEvent.DateStart);
+
+                if (DeleteEventtoGoogleCalendar)
+                {
+                    MessageBox.Show("Event sucessfully deleted from Google Calendar API!");
+                }
+                else
+                {
+                    MessageBox.Show("Couldn't delete event from Google Calendar API ", "Something went wrong");
+                }
+
+
             }
             catch(Exception exc)
             {

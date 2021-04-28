@@ -212,7 +212,52 @@ namespace CalApp1.Services
             return true;
         }
 
+        /// <summary>
+        /// Function to get event by name and date from API and remove it
+        /// </summary>
+        /// <param name="Name"> - contains info about the event summary</param>
+        /// <param name="WhenStarts"> - contains info about when the event happens</param>
 
+        public bool DeleteEvent(string Name, DateTime WhenStarts)
+        {
+
+            if (Name == null || WhenStarts == null)
+                return false;
+
+
+            var calendarId = GetCalendarId();
+
+            var service = GetService();
+
+            EventsResource.ListRequest listRequest = service.Events.List(calendarId);
+            Events events = listRequest.Execute();
+
+            if (!(events.Items != null && events.Items.Count > 0))
+                return false;
+
+            
+            var myevent = events
+                .Items
+                .Where(c => c.Start.DateTime == WhenStarts)
+                .Where(d=>d.Summary==Name)
+                .FirstOrDefault();
+
+            if (myevent == null)
+                return false;
+
+            var DeleteRequest = service.Events.Delete(calendarId,myevent.Id);
+
+            try
+            {
+                DeleteRequest.Execute();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
+        }
         /*
         public static void Initialize()
         {
