@@ -8,18 +8,42 @@
              Background="#403A44"
              d:DesignHeight="740" d:DesignWidth="931">
     <Grid  Background="#403A44" Margin="0,10,0,0">
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="habitsDataGrid" Margin="0,205,496,38" FontSize="20">
-            <!--ustawienie AutoGenerateColumns na False powoduje że kolumny nie są generowane z tego obiektu (Entities) który przyjdzie, ItemsSource ={Binding} żeby do DataSource wrzucać customowe listy -->
-
-            <!--Zdefiniowane kolumny-->
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="250"/><!--Zbindingowano żeby wyświetlało się tylko pole Name-->
-                <DataGridCheckBoxColumn x:Name="DoneStatusColumn" Header="Done" Binding="{Binding Path=Done}" Width="180"/><!--Nazwa DoneStatusColumn jest potrzebna bo na jej podstawie będziemy rozpoznawać które są zrobione, Binding itemów wchodzących do DataGrida ale konkretnie do pola o nazwie Done-->
-            </DataGrid.Columns>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="habitsDataGrid" Margin="0,205,496,38" FontSize="20"
+                  Foreground="White" 
+                  Background="#3E3544" 
+                  RowBackground="#3E3544"
+                  BorderBrush="#3E3544"
+                  GridLinesVisibility="None"
+                  HeadersVisibility="Column">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#3E3544" />
+                </Style>
+            </DataGrid.Resources>
             
+
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="250"/>
+                
+                <DataGridCheckBoxColumn x:Name="DoneStatusColumn" Header="Done" Binding="{Binding Path=Done}" Width="180"/>
+                
+            </DataGrid.Columns>
+
         </DataGrid>
-        <!--Do eventów analogicznie jak wyżej tylko bez Done-->
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="eventsDataGrid" Margin="465,205,0,38" FontSize="20">
+        
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" x:Name="eventsDataGrid" Margin="0,205,0,38" FontSize="20"
+                  Foreground="White" 
+                  Background="#3E3544" 
+                  RowBackground="#3E3544"
+                  BorderBrush="#3E3544"
+                  GridLinesVisibility="None"
+                  HeadersVisibility="Column" HorizontalAlignment="Right" Width="466">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#3E3544" />
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="250"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}" Width="200"/>
@@ -27,7 +51,8 @@
         </DataGrid>
         <TextBlock HorizontalAlignment="Left" Margin="151,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Height="41" FontSize="24" Foreground="White"><Run Language="pl-pl" Text="Habit Events"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="662,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="72" FontSize="24" Foreground="White"><Run Language="pl-pl" Text="Events"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
-        <Button x:Name="confirmDoneBtn" Content="Confirm Done" HorizontalAlignment="Left" Margin="338,167,0,0" VerticalAlignment="Top" Width="97" Height="25" Click="confirmDoneBtn_Click"/>
+        <Button x:Name="confirmDoneBtn" Content="Confirm Done" HorizontalAlignment="Left" Margin="313,166,0,0" VerticalAlignment="Top" Width="120" Foreground="White" Height="36"
+                  BorderBrush="#3E3544" Background="#FF2C2730" Click="confirmDoneBtn_Click"/>
 
     </Grid>
 </UserControl>

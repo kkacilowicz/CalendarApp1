@@ -1,0 +1,218 @@
+\hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests}{}\doxysection{Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests Class Reference}
+\label{class_cal_app1_tests_1_1_google_calendar_service_tests}\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+
+
+Class which Tests Google\+Calendar\+Service\+Class  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a457418c63e43243ecd6bcb4f41246867}{Setup}} ()
+\begin{DoxyCompactList}\small\item\em Method to Initialize parameters for tests \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a16c983099947578b27fd43833c8b0ee5}{Insert\+Event\+Null\+Error\+\_\+test}} (string Name, string Description, Date\+Time Date\+Start, Date\+Time Date\+End)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction to null arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a2f34c75b3b557501ffa7cc169ab820fd}{Insert\+Event\+\_\+test}} (string Name, string Description)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if everything is fine \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a42c218912392a21443e8ab74e3baebe5}{Insert\+Event\+\_\+\+Date\+Comparison\+Test}} (string Name, string Description)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if Date End is later than Date Start \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a941bc24fd675c66521a80e8b43a9c0e2}{Insert\+Event\+\_\+\+Dates\+Are\+Equal}} (string Name, string Description)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if Date End is equal to Date Start \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a7400fd62fe9cb525dfded4d57ce4e539}{Insert\+Reccuring\+Event\+Null\+Error\+\_\+test}} (string Name, string Description, Date\+Time Date\+Start, Date\+Time Date\+End, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction to null arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a41664713cfd739afd84c4764b5702b3b}{Insert\+Recurring\+Event\+\_\+\+How\+Often\+Correcttest}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if there are proper reccuring arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a81f0d6441e72e956253e3b4549750e17}{Insert\+Recurring\+Event\+\_\+\+How\+Often\+Wrongtest}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if there are wrong reccuring arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a3a53b9a1815bdb3ba47c2e81b6041970}{Insert\+Recurring\+Event\+\_\+\+How\+Many\+Correcttest}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if there are proper How\+Many arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a866cea2eb9a97199a311063bee988c52}{Insert\+Recurring\+Event\+\_\+\+How\+Many\+Wrongtest}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if there are wrong How\+Many arguments \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a7739b5d1387ece961ffa52603fa0c9dc}{Insert\+Recurring\+Event\+\_\+\+Date\+Comparison\+Test}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if Date Start is later than Date\+End \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_aaa0702f588a88771a761a2608c5e13da}{Insert\+Recurring\+Event\+\_\+\+Dates\+Are\+Equal}} (string Name, string Description, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if Date Start is equal to Date\+End \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a7e65763eaa4761a1fdc754efd3ac5aca}{Delete\+Event\+\_\+\+Null\+Error}} (string Name, Date\+Time Date\+Start)
+\begin{DoxyCompactList}\small\item\em Test to check function reaction if arguments are null \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static IEnumerable$<$ Test\+Case\+Data $>$ \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a1b339681da214a4050becf17faa3b0d9}{Insert\+Arguments\+Provider}} ()
+\begin{DoxyCompactList}\small\item\em Test\+Case\+Data Collection to check function with null arguments \end{DoxyCompactList}\item 
+static IEnumerable$<$ Test\+Case\+Data $>$ \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_a0f195952081493c2db615e568c1cf212}{Insert\+Reccuring\+Arguments\+Provider}} ()
+\begin{DoxyCompactList}\small\item\em Test\+Case\+Data Collection to check function with null arguments \end{DoxyCompactList}\item 
+static IEnumerable$<$ Test\+Case\+Data $>$ \mbox{\hyperlink{class_cal_app1_tests_1_1_google_calendar_service_tests_aedc43629d0b1090771a8c55b6acf560a}{Insert\+Reccuring\+How\+Often\+Correct\+Arguments\+Provider}} ()
+\begin{DoxyCompactList}\small\item\em Test\+Case\+Data Collection to check function to proper reccurence arguments \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which Tests Google\+Calendar\+Service\+Class 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a7e65763eaa4761a1fdc754efd3ac5aca}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a7e65763eaa4761a1fdc754efd3ac5aca}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!DeleteEvent\_NullError@{DeleteEvent\_NullError}}
+\index{DeleteEvent\_NullError@{DeleteEvent\_NullError}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{DeleteEvent\_NullError()}{DeleteEvent\_NullError()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Delete\+Event\+\_\+\+Null\+Error (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{Date\+Time}]{Date\+Start }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if arguments are null 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a1b339681da214a4050becf17faa3b0d9}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a1b339681da214a4050becf17faa3b0d9}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertArgumentsProvider@{InsertArgumentsProvider}}
+\index{InsertArgumentsProvider@{InsertArgumentsProvider}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertArgumentsProvider()}{InsertArgumentsProvider()}}
+{\footnotesize\ttfamily static IEnumerable$<$Test\+Case\+Data$>$ Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Arguments\+Provider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test\+Case\+Data Collection to check function with null arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a42c218912392a21443e8ab74e3baebe5}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a42c218912392a21443e8ab74e3baebe5}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertEvent\_DateComparisonTest@{InsertEvent\_DateComparisonTest}}
+\index{InsertEvent\_DateComparisonTest@{InsertEvent\_DateComparisonTest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertEvent\_DateComparisonTest()}{InsertEvent\_DateComparisonTest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Event\+\_\+\+Date\+Comparison\+Test (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if Date End is later than Date Start 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a941bc24fd675c66521a80e8b43a9c0e2}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a941bc24fd675c66521a80e8b43a9c0e2}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertEvent\_DatesAreEqual@{InsertEvent\_DatesAreEqual}}
+\index{InsertEvent\_DatesAreEqual@{InsertEvent\_DatesAreEqual}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertEvent\_DatesAreEqual()}{InsertEvent\_DatesAreEqual()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Event\+\_\+\+Dates\+Are\+Equal (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if Date End is equal to Date Start 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a2f34c75b3b557501ffa7cc169ab820fd}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a2f34c75b3b557501ffa7cc169ab820fd}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertEvent\_test@{InsertEvent\_test}}
+\index{InsertEvent\_test@{InsertEvent\_test}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertEvent\_test()}{InsertEvent\_test()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Event\+\_\+test (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if everything is fine 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a16c983099947578b27fd43833c8b0ee5}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a16c983099947578b27fd43833c8b0ee5}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertEventNullError\_test@{InsertEventNullError\_test}}
+\index{InsertEventNullError\_test@{InsertEventNullError\_test}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertEventNullError\_test()}{InsertEventNullError\_test()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Event\+Null\+Error\+\_\+test (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{Date\+Time}]{Date\+Start,  }\item[{Date\+Time}]{Date\+End }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction to null arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a0f195952081493c2db615e568c1cf212}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a0f195952081493c2db615e568c1cf212}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertReccuringArgumentsProvider@{InsertReccuringArgumentsProvider}}
+\index{InsertReccuringArgumentsProvider@{InsertReccuringArgumentsProvider}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertReccuringArgumentsProvider()}{InsertReccuringArgumentsProvider()}}
+{\footnotesize\ttfamily static IEnumerable$<$Test\+Case\+Data$>$ Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Reccuring\+Arguments\+Provider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test\+Case\+Data Collection to check function with null arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a7400fd62fe9cb525dfded4d57ce4e539}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a7400fd62fe9cb525dfded4d57ce4e539}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertReccuringEventNullError\_test@{InsertReccuringEventNullError\_test}}
+\index{InsertReccuringEventNullError\_test@{InsertReccuringEventNullError\_test}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertReccuringEventNullError\_test()}{InsertReccuringEventNullError\_test()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Reccuring\+Event\+Null\+Error\+\_\+test (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{Date\+Time}]{Date\+Start,  }\item[{Date\+Time}]{Date\+End,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction to null arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_aedc43629d0b1090771a8c55b6acf560a}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_aedc43629d0b1090771a8c55b6acf560a}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertReccuringHowOftenCorrectArgumentsProvider@{InsertReccuringHowOftenCorrectArgumentsProvider}}
+\index{InsertReccuringHowOftenCorrectArgumentsProvider@{InsertReccuringHowOftenCorrectArgumentsProvider}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertReccuringHowOftenCorrectArgumentsProvider()}{InsertReccuringHowOftenCorrectArgumentsProvider()}}
+{\footnotesize\ttfamily static IEnumerable$<$Test\+Case\+Data$>$ Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Reccuring\+How\+Often\+Correct\+Arguments\+Provider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Test\+Case\+Data Collection to check function to proper reccurence arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a7739b5d1387ece961ffa52603fa0c9dc}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a7739b5d1387ece961ffa52603fa0c9dc}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_DateComparisonTest@{InsertRecurringEvent\_DateComparisonTest}}
+\index{InsertRecurringEvent\_DateComparisonTest@{InsertRecurringEvent\_DateComparisonTest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_DateComparisonTest()}{InsertRecurringEvent\_DateComparisonTest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+Date\+Comparison\+Test (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if Date Start is later than Date\+End 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_aaa0702f588a88771a761a2608c5e13da}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_aaa0702f588a88771a761a2608c5e13da}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_DatesAreEqual@{InsertRecurringEvent\_DatesAreEqual}}
+\index{InsertRecurringEvent\_DatesAreEqual@{InsertRecurringEvent\_DatesAreEqual}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_DatesAreEqual()}{InsertRecurringEvent\_DatesAreEqual()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+Dates\+Are\+Equal (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if Date Start is equal to Date\+End 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a3a53b9a1815bdb3ba47c2e81b6041970}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a3a53b9a1815bdb3ba47c2e81b6041970}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_HowManyCorrecttest@{InsertRecurringEvent\_HowManyCorrecttest}}
+\index{InsertRecurringEvent\_HowManyCorrecttest@{InsertRecurringEvent\_HowManyCorrecttest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_HowManyCorrecttest()}{InsertRecurringEvent\_HowManyCorrecttest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+How\+Many\+Correcttest (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if there are proper How\+Many arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a866cea2eb9a97199a311063bee988c52}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a866cea2eb9a97199a311063bee988c52}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_HowManyWrongtest@{InsertRecurringEvent\_HowManyWrongtest}}
+\index{InsertRecurringEvent\_HowManyWrongtest@{InsertRecurringEvent\_HowManyWrongtest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_HowManyWrongtest()}{InsertRecurringEvent\_HowManyWrongtest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+How\+Many\+Wrongtest (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if there are wrong How\+Many arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a41664713cfd739afd84c4764b5702b3b}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a41664713cfd739afd84c4764b5702b3b}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_HowOftenCorrecttest@{InsertRecurringEvent\_HowOftenCorrecttest}}
+\index{InsertRecurringEvent\_HowOftenCorrecttest@{InsertRecurringEvent\_HowOftenCorrecttest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_HowOftenCorrecttest()}{InsertRecurringEvent\_HowOftenCorrecttest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+How\+Often\+Correcttest (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if there are proper reccuring arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a81f0d6441e72e956253e3b4549750e17}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a81f0d6441e72e956253e3b4549750e17}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!InsertRecurringEvent\_HowOftenWrongtest@{InsertRecurringEvent\_HowOftenWrongtest}}
+\index{InsertRecurringEvent\_HowOftenWrongtest@{InsertRecurringEvent\_HowOftenWrongtest}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{InsertRecurringEvent\_HowOftenWrongtest()}{InsertRecurringEvent\_HowOftenWrongtest()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Insert\+Recurring\+Event\+\_\+\+How\+Often\+Wrongtest (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Test to check function reaction if there are wrong reccuring arguments 
+
+\mbox{\Hypertarget{class_cal_app1_tests_1_1_google_calendar_service_tests_a457418c63e43243ecd6bcb4f41246867}\label{class_cal_app1_tests_1_1_google_calendar_service_tests_a457418c63e43243ecd6bcb4f41246867}} 
+\index{CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}!Setup@{Setup}}
+\index{Setup@{Setup}!CalApp1Tests.GoogleCalendarServiceTests@{CalApp1Tests.GoogleCalendarServiceTests}}
+\doxysubsubsection{\texorpdfstring{Setup()}{Setup()}}
+{\footnotesize\ttfamily void Cal\+App1\+Tests.\+Google\+Calendar\+Service\+Tests.\+Setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to Initialize parameters for tests 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Lenovo/\+Desktop/\+Calendar\+App1/\+Calendar\+App1-\/master/\+Cal\+App1\+Tests/Google\+Calendar\+Service\+Tests.\+cs\end{DoxyCompactItemize}

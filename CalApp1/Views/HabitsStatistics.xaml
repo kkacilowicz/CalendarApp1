@@ -19,7 +19,7 @@
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"><Run Language="pl-pl" Text="Habits"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
 
-        <!--Tutaj powinno to wszystko działać, ale no cóż wywala się, tych danych po prostu nie umie wyłuskać-->
+        
         <DVC:Chart Name="MyChart" Width="400" Margin="340,25,29,57" >
             <DVC:Chart.Series>
                 <DVC:PieSeries Title="HabitEventsPieSeriesPlot"

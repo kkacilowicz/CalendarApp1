@@ -79,6 +79,43 @@
             Events
             </summary>
         </member>
+        <member name="M:CalApp1.Views.Events.#ctor">
+            <summary>
+            Class which services the Events.xaml view
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Events.ShowCalendarDayEvents(CalApp1.Entities.CalendarDate)">
+            <summary>
+            Function compares date chosen by user and starting date of event and displays list of matching events
+            </summary>
+            <param name="calDay"> - contains date chosen by user in MainWindow's calendar</param>
+        </member>
+        <member name="M:CalApp1.Views.Events.btnAddNewEvent_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Add Event, creates new Event object and adds it to data base
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Events.deleteButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Delete Event, which deletes event from data base
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Events.specifiedEventsBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Show specified Events, which displays events of specified starting date
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Events.GetSpcifiedEvents(System.DateTime)">
+            <summary>
+            Function compares starting date chosen by user and starting dates of events in data base and returns list of matching events
+            </summary>
+            <param name="startDate"> - contains events starting date choosen by user in Events view's Calendar</param>
+        </member>
+        <member name="M:CalApp1.Views.Events.allEventsBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Show all Events, which displays all events from database
+            </summary>
+        </member>
         <member name="M:CalApp1.Views.Events.InitializeComponent">
             <summary>
             InitializeComponent
@@ -90,6 +127,46 @@
             </summary>
             <summary>
             Habits
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.#ctor">
+            <summary>
+            Class which services the Habits.xaml view
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.addHabitButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Add Habit, creates new Habit object and adds it to data base
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.returnHabits">
+            <summary>
+            Function returns list of all habits
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.returnHabitEvents">
+            <summary>
+            Function returns list of all habit events
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.addHabitEventBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Add habit events and adds several habit events with selected by user dates
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.showHabitEventsBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Show all habit events and displays all habit events from data base
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.showSpecifiedEventsBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Show specified habit events and displays all habit events assigned to habit chosen by user
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.Habits.deleteHabitBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Delete habit and deletes all habit events assigned to chosen habit and habit itself from data base
             </summary>
         </member>
         <member name="M:CalApp1.Views.Habits.InitializeComponent">
@@ -140,6 +217,22 @@
             TodayActivities
             </summary>
         </member>
+        <member name="M:CalApp1.Views.TodayActivities.#ctor">
+            <summary>
+            Class which services the TodayActivities.xaml view
+            </summary>
+        </member>
+        <member name="M:CalApp1.Views.TodayActivities.ShowActivitiesForSpecifiedDay(CalApp1.Entities.CalendarDate)">
+            <summary>
+            Function compares date chosen by user and starting date of event and habit and displays list of matching events and habits
+            </summary>
+            <param name="calDay"> - contains date chosen by user in MainWindow's calendar</param>
+        </member>
+        <member name="M:CalApp1.Views.TodayActivities.confirmDoneBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Confirm Done, checks checkboxes assigned to events and creates two collections of events done and not done
+            </summary>
+        </member>
         <member name="M:CalApp1.Views.TodayActivities.InitializeComponent">
             <summary>
             InitializeComponent
@@ -151,6 +244,36 @@
             </summary>
             <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.events_btnClicked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Events and displays Events view
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.calendarMenu_SelectedDatesChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Function sends date from calendar to new canvas stored window
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.habitStatistics_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Habits Statistics and displays HabitsStatistics view
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.habitCreatorBtn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function services button Habit creator and displays Habits view
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.calendarMenu_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Function displays events and habits for chosen date 
+            </summary>
+        </member>
+        <member name="M:CalendarApp1.MainWindow.mainWindowGrid_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Function runs after opening MainWindow and sends todays date
             </summary>
         </member>
         <member name="M:CalendarApp1.MainWindow.InitializeComponent">

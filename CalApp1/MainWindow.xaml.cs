@@ -25,49 +25,70 @@ namespace CalendarApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-            
+              
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new TodayActivitiesViewModel();
+            TodayActivitiesViewModel todayActivitiesModel = new TodayActivitiesViewModel();
+            DataContext = todayActivitiesModel;
 
         }
 
-
+        /// <summary>
+        /// Function services button Events and displays Events view
+        /// </summary>
         private void events_btnClicked(object sender, RoutedEventArgs e)
         {
-            DataContext = new EventsViewModel(); //do kontextu aplikacji okna MainWindow przypisuję model EventsViewModel, dzięki czemu znaczniku Canvas w xamlu wyświetla się View wybranego modelu
+            DataContext = new EventsViewModel(); 
 
 
         }
 
-        //funkcja wywoływana kiedy zmieni się data na kalendarzu, czyli jak klikniemy na jakiś dzień
+        /// <summary>
+        /// Function sends date from calendar to new canvas stored window
+        /// </summary>
         private void calendarMenu_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            EventsViewModel calendarEvent = new EventsViewModel();//po naciśnięciu wybranego dnia w kalendarzu tworzę obiekt typu EventsViewModel, chcę odpalić zakładkę events z UI
-            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value});//wysyłam do okna które się zaraz odpali parametry które chcę wysłać, tutaj akurat wysyłam datę która została kliknięta w kalendarzu <CalendarDate>, w nawiasie jest jej wartość
+            EventsViewModel calendarEvent = new EventsViewModel();
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value});
                                                                                                                     
-            DataContext = calendarEvent;//aby pokazać to okno przypisuję wyżej stworzony model do tego "okienka" DataContext
-                                        //wtedy w MainWindow.xaml jest sprawdzane jaka data przyszła i tam jest tworzony widok danego dnia za pomocą
+            DataContext = calendarEvent;
 
         }
 
+        /// <summary>
+        /// Function services button Habits Statistics and displays HabitsStatistics view
+        /// </summary>
         private void habitStatistics_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new HabitsStatisticsViewModel();
         }
 
+        /// <summary>
+        /// Function services button Habit creator and displays Habits view
+        /// </summary>
         private void habitCreatorBtn_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new HabitsViewModel();
         }
 
-        private void calendarMenu_MouseDoubleClick(object sender, MouseButtonEventArgs e)//taka sama funkcja jak wcześniejsze selected dates changed, tylko działa po podwójnum kliknięcu na jakąś datę i wyświela aktywności na dzień dzisiejszy
+        /// <summary>
+        /// Function displays events and habits for chosen date 
+        /// </summary>
+        private void calendarMenu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            TodayActivitiesViewModel todayActivitiesModel = new TodayActivitiesViewModel();//stworzony jest ViewModel do dzisiejszych nawyków i wydarzeń
-            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value });//tutaj jest wywoływany jest ten Messanger i w nim przesyłam ten obiekt typu CalendarDate w nawiasie jest to co chcę przesłać, czyli tworzę nowy obiekt i w to pole CalendarDate wrzucam tą naszą datę wybraną z kalendarza
-            DataContext = todayActivitiesModel;// ładuję DataContext aby pojawił się widok TodayActivities
+            TodayActivitiesViewModel todayActivitiesModel = new TodayActivitiesViewModel();
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = calendarMenu.SelectedDate.Value });
+            DataContext = todayActivitiesModel;
+        }
+
+        /// <summary>
+        /// Function runs after opening MainWindow and sends todays date
+        /// </summary>
+        private void mainWindowGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            Messenger.Default.Send<CalendarDate>(new CalendarDate { CalendarDay = DateTime.Today });
         }
     }
 }

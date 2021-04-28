@@ -28,68 +28,56 @@ namespace CalApp1.Views
     public partial class Events : UserControl
     {
         private GoogleCalendarService _googleCalendarService;
-        public Events()//klasa obsługująca widok Events
+
+        /// <summary>
+        /// Class which services the Events.xaml view
+        /// </summary>
+        public Events()
         {
             _googleCalendarService = new GoogleCalendarService();
-            /*
-           using (var dbContext = new Interactive_calendarDbContext())
-           {
-               User tempUser = new User()
-               {
-                   Email = "Ania"
-               };
-               dbContext.Users.Add(tempUser);
-               dbContext.SaveChanges();
-           }
-           */ 
-
-            //Messenger.Default.Register<CalendarDate>(this, this.ShowCalendarDayEvents); //odebranie danych (klikniętej daty) z MainWindow
-            //this jest chyba od kontekstu, nie jestem pewna, ale musi tutaj być
-            //evDate to parametr który przyszedł (typu DateTime)
-            //=> oznacza że to coś podobnego jak wyrażenia lambda w Javie, czyli ten poniższy blok jest wywołany w argumencie tej funkcji
-            //dostaję daną (tutaj evDate) i mogę ją przerobić i dopiero funkcja się wykonuje
-            InitializeComponent();//wyświetla widok, ale w tym konstruktorze Events można też coś doimplementować żeby wyświetlało się przy starcie widoku, np żeby już ładowały się tam dane
+           
+            InitializeComponent();
         }
 
-        public void ShowCalendarDayEvents(CalendarDate calDay)//funkcja jako parametr ma dostać obiekt który przesyłamy czyli ten calDay klasy CalendarDate
+        /// <summary>
+        /// Function compares date chosen by user and starting date of event and displays list of matching events
+        /// </summary>
+        /// <param name="calDay"> - contains date chosen by user in MainWindow's calendar</param>
+        public void ShowCalendarDayEvents(CalendarDate calDay)
         {
-            ObservableCollection<Event> evCollection; //lista typu ObservableCollection, bo ten typ jest zalecany do DataGridów, przechowująca typ Event
-            using (var dbContext = new Interactive_calendarDbContext()) //using otwierający bazę danych, na której będziemy działać 
+            ObservableCollection<Event> evCollection; 
+            using (var dbContext = new Interactive_calendarDbContext()) 
             {
-               MessageBox.Show("loaded data: " + calDay.CalendarDay);//sprawdzanie czy data przychodzi z MainWindow
-                var query = dbContext.Events //tworzę quekę sqlową typu var, bierzemy instancję bazy danych, chcemy działać na naszej kolekcji Eventów
-                                .Where(s => DateTime.Compare(s.DateStart, calDay.CalendarDay) == 0);//to nasz condition statement, co chcemy wyłuskać 
-                //argument s to pojedynczy event z całej kolekcji eventów(z racji że .Where zostało wywołane na całej kolekcji to wnioskuje ono że s jest jednym
-                //eventem), po strzałce znajduje się porównanie dat przy pomocy metody Compare, porównuję datę startową eventu wpisanego w Events UI z tą datą która
-                //przyszła z kalendarza w MainWindow, ta funkcja zwraca 0 wtedy, kiedy te daty są sobie równe w rezultacie ta querka powinna mi zwrócić te wszystkie eventy, w których data startowa jest taka sama jak kliknięta data w kalendarzu
+               
+                var query = dbContext.Events 
+                                .Where(s => DateTime.Compare(s.DateStart, calDay.CalendarDay) == 0);
 
-                evCollection = new ObservableCollection<Event>(query);//do wyżej zdefiniowanej kolekcji w której będziemy przetrzymywać wyniki, przypisujemy nowo tworzoną za pomoca konstruktora kolekcję ObservableCollection typu Event i jako argument przyjmuje ona querkę zwracana w ten sposów lista obiektów jest przypisywana do evCollection
-                eventsDataGrid.ItemsSource = evCollection; //do DataContext eventsDataGrid przypisujemy listę, aby wyświetlić tą listę
-                //ItemsSource działa lepiej niż DataContext w tym miejscu, choć można korzystać z obu
+                evCollection = new ObservableCollection<Event>(query);
+                eventsDataGrid.ItemsSource = evCollection; 
 
             }
         }
 
+        /// <summary>
+        /// Function services button Add Event, creates new Event object and adds it to data base
+        /// </summary>
         private void btnAddNewEvent_Click(object sender, RoutedEventArgs e)
         {
-            using (var context = new Interactive_calendarDbContext())//dostajemy się do bazy danych tworząc zmienną context 
-            {//wszystkie operacje na bazach danych warto robić w using, w nawiasie jest to co powinno się otworzyć, ponieważ to co tu otworzymy zamknie się na końcu tego usingu i nie trzeba pamiętać o jej zamykaniu
-                try //try catcha używamy żeby zabezpieczyć się przed tym że coś nie zostało wpisane w te labelki poniżej
+            using (var context = new Interactive_calendarDbContext())
+            {
+                try 
                 {
-  
-                    var newEvent = new Event()//dodawanie nowych elementów do bazy danych
-                    //tworzę nowy obiekt modelu z folderu Entifies, tutaj Event. W C# można używać zamiast konstruktora takiego bloku
-
+                    var newEvent = new Event()
                     {
-                        Name = nameTextBox.Text,//nadaję mu wszystkie pola
+                        Name = nameTextBox.Text,
                         Description = descriptionTextBox.Text,
-                        DateStart = startDatePicker.SelectedDate.Value,//zwraca datę typu DateTime
+                        DateStart = startDatePicker.SelectedDate.Value,
                         DateEnd = endDatePicker.SelectedDate.Value,
-                        UserId = 1,//Int32.Parse(userIdTextBox.Text),//string z TextBoxa parsuję na int
+                        UserId = 1,
 
                     };
-                    context.Events.Add(newEvent);//wywołujemy context czyli zmienną za której pomocą będziemy dostawać się do bazy danych, następnie kolekcję Events, pod tą nazwą są wszystkie Eventy, na tej kolekcji wywołuję funkcję Add() która doda nowy element który przyjmuje w argumencie
-                    context.SaveChanges();//to taki commit jakby, context - czyli nasza baza danych, wywoływana na niej metoda SaveChanges
+                    context.Events.Add(newEvent);
+                    context.SaveChanges();
                     MessageBox.Show("New Event Added to Db!");
                     
                     var AddEventtoGoogleCalendar = _googleCalendarService.InsertEvent(newEvent.Name, 
@@ -103,24 +91,23 @@ namespace CalApp1.Views
                     {
                         MessageBox.Show("Couldn't load event to Google Calendar API ", "Something went wrong");
                     }
-
-                    
-
                 }
-                catch (Exception ex)//łapanie wyjątków że jak któreś pole dodawania Eventów nie zostanie uzupełnione to wyświetli się komunikat żeby sprawdzić
+                catch (Exception ex)
                 {
                     MessageBox.Show("Check all the forms if they are filled properly ", "Something went wrong");
                 }
             }
+        }
 
-
-        }//DataGrid to nasza tabela do wyświetlania danych (tutaj Eventów)
         private void eventsDataGrid_Initialized(object sender, EventArgs e)
         {
             
             
         }
 
+        /// <summary>
+        /// Function services button Delete Event, which deletes event from data base
+        /// </summary>
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -157,12 +144,18 @@ namespace CalApp1.Views
 
         }
 
+        /// <summary>
+        /// Function services button Show specified Events, which displays events of specified starting date
+        /// </summary>
         private void specifiedEventsBtn_Click(object sender, RoutedEventArgs e)
         {
             eventsDataGrid.ItemsSource = GetSpcifiedEvents(eventsCalendar.SelectedDate.Value);
         }
 
-
+        /// <summary>
+        /// Function compares starting date chosen by user and starting dates of events in data base and returns list of matching events
+        /// </summary>
+        /// <param name="startDate"> - contains events starting date choosen by user in Events view's Calendar</param>
         private ObservableCollection<Event> GetSpcifiedEvents(DateTime startDate)
         {
             ObservableCollection<Event> events;
@@ -175,6 +168,9 @@ namespace CalApp1.Views
             return events;
         }
 
+        /// <summary>
+        /// Function services button Show all Events, which displays all events from database
+        /// </summary>
         private void allEventsBtn_Click(object sender, RoutedEventArgs e)
         {
             ObservableCollection<Event> events;

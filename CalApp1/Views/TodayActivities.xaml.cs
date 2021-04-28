@@ -24,29 +24,31 @@ namespace CalApp1.Views
     /// </summary>
     public partial class TodayActivities : UserControl
     {
-        public ObservableCollection<HabitEvent> habitEvents; //2 kolekcje, odpowiedzialne za nawyki i eventy są wyniesione jako pola klasowe
-        public ObservableCollection<Event> events;//bo chcę żeby były widoczne we wszystkich poniższych metodach klasowych
+        public ObservableCollection<HabitEvent> habitEvents; 
+        public ObservableCollection<Event> events;
 
-        public TodayActivities()//konstruktor
+        /// <summary>
+        /// Class which services the TodayActivities.xaml view
+        /// </summary>
+        public TodayActivities()
         {
-            Messenger.Default.Register<CalendarDate>(this, this.ShowActivitiesForSpecifiedDay);//odbieram wiadomość, czyli rejestruję że przyjdzie do mnie obiekt typu 
-            //CalendarDate, this cyli kontekst jako pierwszy parametr
             InitializeComponent();
+            Messenger.Default.Register<CalendarDate>(this, this.ShowActivitiesForSpecifiedDay);
         }
 
-       
-
-
-        private void ShowActivitiesForSpecifiedDay(CalendarDate calDay)//metoda obsługująca przyjście tej daty, jako parametr przyjmuje obiekt typu CalendarDate 
+        /// <summary>
+        /// Function compares date chosen by user and starting date of event and habit and displays list of matching events and habits
+        /// </summary>
+        /// <param name="calDay"> - contains date chosen by user in MainWindow's calendar</param>
+        private void ShowActivitiesForSpecifiedDay(CalendarDate calDay) 
         {
-            using (var dbContext = new Interactive_calendarDbContext())//odpalamy bazę danych
+            using (var dbContext = new Interactive_calendarDbContext())
             {
-                var habitsQuery = dbContext.HabitEvents//tworzymy querkę w której będziemy szukać wszystkich wystąpień nawyków których data startowa jest równa
-                    //dacie obiektu który do nas przyszedł
+                var habitsQuery = dbContext.HabitEvents
                                     .Where(h => DateTime.Compare(h.DateStart, calDay.CalendarDay) == 0);
-                habitEvents = new ObservableCollection<HabitEvent>(habitsQuery);//tworzymy nowy obiekt kolekcji HabitEvents i przypisujemy go do zmiennej, będzie on przechowywał wystąpienia nawyków
+                habitEvents = new ObservableCollection<HabitEvent>(habitsQuery);
 
-                var eventsQuery = dbContext.Events//analogicznie tylko z eventami
+                var eventsQuery = dbContext.Events
                                     .Where(e => DateTime.Compare(e.DateStart, calDay.CalendarDay) == 0);
                 events = new ObservableCollection<Event>(eventsQuery);
                 habitsDataGrid.ItemsSource = habitEvents;
@@ -56,28 +58,29 @@ namespace CalApp1.Views
 
         }
 
-        private void confirmDoneBtn_Click(object sender, RoutedEventArgs e)//funkcja obsługująca przycisk ConfirmDone
+        /// <summary>
+        /// Function services button Confirm Done, checks checkboxes assigned to events and creates two collections of events done and not done
+        /// </summary>
+        private void confirmDoneBtn_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<HabitEvent> doneHabits = new ObservableCollection<HabitEvent>();//tworzymy pustą kolekcję która będzie przechowywać wystąpienia nawyków
-            //które mają zaznaczonego checkboxa
+            ObservableCollection<HabitEvent> doneHabits = new ObservableCollection<HabitEvent>();
             ObservableCollection<HabitEvent> notDoneHabits = new ObservableCollection<HabitEvent>();
-            using (var dbContext = new Interactive_calendarDbContext())//otwarcie bazy danych
+            using (var dbContext = new Interactive_calendarDbContext())
             {
-                foreach (HabitEvent habitItem in habitsDataGrid.ItemsSource)//przechodzimy po każdym wystąpieniu nawyku z naszego datagrida ItemsSource czyli wywołaniu
-                    //kolekcji wystąpień naywku, która jest aktualnie załadowana do dataGrida
+                foreach (HabitEvent habitItem in habitsDataGrid.ItemsSource)
                 {
-                    if (((CheckBox)DoneStatusColumn.GetCellContent(habitItem)).IsChecked == true)//bierzemy kolumnę z checkboxami, z niej jedną komórkę i sprawdzamy czy 
-                        //jest checked
+                    if (((CheckBox)DoneStatusColumn.GetCellContent(habitItem)).IsChecked == true)
+                        
                     {
-                        doneHabits.Add(habitItem);//to to wystąpienie nawyku wrzucamy do kolekcji doneHabits
+                        doneHabits.Add(habitItem);
                     }
                     else
                     {
-                        notDoneHabits.Add(habitItem);// jeŻeli nie to do kolekcji notDoneHabits
+                        notDoneHabits.Add(habitItem);
                     }
 
                 }
-                dbContext.UpdateRange(notDoneHabits);//odpalamy kontekst bazodanowy i updateujemy kolekcję obiektów 
+                dbContext.UpdateRange(notDoneHabits);
                 dbContext.UpdateRange(doneHabits);
                 dbContext.SaveChanges();
                 MessageBox.Show("Done habits confirmed");

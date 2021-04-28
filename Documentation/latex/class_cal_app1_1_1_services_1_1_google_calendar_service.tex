@@ -1,0 +1,98 @@
+\hypertarget{class_cal_app1_1_1_services_1_1_google_calendar_service}{}\doxysection{Cal\+App1.\+Services.\+Google\+Calendar\+Service Class Reference}
+\label{class_cal_app1_1_1_services_1_1_google_calendar_service}\index{CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}}
+
+
+Class which services the interaction between the User of the \mbox{\hyperlink{class_cal_app1_1_1_app}{App}} and Google Calendar API  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_cal_app1_1_1_services_1_1_google_calendar_service_a72ba0874eaac0dfdd4d2ffc7a86142ce}{Insert\+Event}} (string Name, string Description, Date\+Time Date\+Start, Date\+Time Date\+End)
+\begin{DoxyCompactList}\small\item\em Function to send all the details and create a Google Calendar event \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cal_app1_1_1_services_1_1_google_calendar_service_a8c5060ec3b29826c39e8943d5b3dddde}{Insert\+Reccuring\+Event}} (string Name, string Description, Date\+Time Date\+Start, Date\+Time Date\+End, string How\+Often, int How\+Many)
+\begin{DoxyCompactList}\small\item\em Function to send all the details and create a Google Calendar event \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cal_app1_1_1_services_1_1_google_calendar_service_ab21a3c9d2112c850f0c49261b2df1298}{Delete\+Event}} (string Name, Date\+Time When\+Starts)
+\begin{DoxyCompactList}\small\item\em Function to get event by name and date from API and remove it \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which services the interaction between the User of the \mbox{\hyperlink{class_cal_app1_1_1_app}{App}} and Google Calendar API 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cal_app1_1_1_services_1_1_google_calendar_service_ab21a3c9d2112c850f0c49261b2df1298}\label{class_cal_app1_1_1_services_1_1_google_calendar_service_ab21a3c9d2112c850f0c49261b2df1298}} 
+\index{CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}!DeleteEvent@{DeleteEvent}}
+\index{DeleteEvent@{DeleteEvent}!CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}}
+\doxysubsubsection{\texorpdfstring{DeleteEvent()}{DeleteEvent()}}
+{\footnotesize\ttfamily bool Cal\+App1.\+Services.\+Google\+Calendar\+Service.\+Delete\+Event (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{Date\+Time}]{When\+Starts }\end{DoxyParamCaption})}
+
+
+
+Function to get event by name and date from API and remove it 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Name} & -\/ contains info about the event summary\\
+\hline
+{\em When\+Starts} & -\/ contains info about when the event happens\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cal_app1_1_1_services_1_1_google_calendar_service_a72ba0874eaac0dfdd4d2ffc7a86142ce}\label{class_cal_app1_1_1_services_1_1_google_calendar_service_a72ba0874eaac0dfdd4d2ffc7a86142ce}} 
+\index{CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}!InsertEvent@{InsertEvent}}
+\index{InsertEvent@{InsertEvent}!CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}}
+\doxysubsubsection{\texorpdfstring{InsertEvent()}{InsertEvent()}}
+{\footnotesize\ttfamily bool Cal\+App1.\+Services.\+Google\+Calendar\+Service.\+Insert\+Event (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{Date\+Time}]{Date\+Start,  }\item[{Date\+Time}]{Date\+End }\end{DoxyParamCaption})}
+
+
+
+Function to send all the details and create a Google Calendar event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Name} & -\/ contains info about the event summary\\
+\hline
+{\em Description} & -\/ contains info about the event description\\
+\hline
+{\em Date\+Start} & -\/ contains info about the event Start Time of the event\\
+\hline
+{\em Date\+End} & -\/ contains info about the event End Time of the event \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_cal_app1_1_1_services_1_1_google_calendar_service_a8c5060ec3b29826c39e8943d5b3dddde}\label{class_cal_app1_1_1_services_1_1_google_calendar_service_a8c5060ec3b29826c39e8943d5b3dddde}} 
+\index{CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}!InsertReccuringEvent@{InsertReccuringEvent}}
+\index{InsertReccuringEvent@{InsertReccuringEvent}!CalApp1.Services.GoogleCalendarService@{CalApp1.Services.GoogleCalendarService}}
+\doxysubsubsection{\texorpdfstring{InsertReccuringEvent()}{InsertReccuringEvent()}}
+{\footnotesize\ttfamily bool Cal\+App1.\+Services.\+Google\+Calendar\+Service.\+Insert\+Reccuring\+Event (\begin{DoxyParamCaption}\item[{string}]{Name,  }\item[{string}]{Description,  }\item[{Date\+Time}]{Date\+Start,  }\item[{Date\+Time}]{Date\+End,  }\item[{string}]{How\+Often,  }\item[{int}]{How\+Many }\end{DoxyParamCaption})}
+
+
+
+Function to send all the details and create a Google Calendar event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Name} & -\/ contains info about the event summary\\
+\hline
+{\em Description} & -\/ contains info about the event description\\
+\hline
+{\em Date\+Start} & -\/ contains info about the event Start Time of the event\\
+\hline
+{\em Date\+End} & -\/ contains info about the event End Time of the event \\
+\hline
+\end{DoxyParams}
+/// 
+\begin{DoxyParams}{Parameters}
+{\em How\+Often} & -\/ contains info abbout the reccurence type, weekly, daily etc It accepts only \char`\"{}\+DAILY\char`\"{}, \char`\"{}\+MONTHLY\char`\"{}, \char`\"{}\+YEARLY\char`\"{}, \char`\"{}\+WEEKLY\char`\"{}\\
+\hline
+\end{DoxyParams}
+/// 
+\begin{DoxyParams}{Parameters}
+{\em How\+Many} & -\/ contains info about how many times it should occur for ex \char`\"{}\+DAILY\char`\"{}, 2 -\/ event will occur in 2 consecutive days and never happen again\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Lenovo/\+Desktop/\+Calendar\+App1/\+Calendar\+App1-\/master/\+Cal\+App1/Google\+Calendar\+Service.\+cs\end{DoxyCompactItemize}

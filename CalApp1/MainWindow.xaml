@@ -28,7 +28,7 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid>
+    <Grid x:Name="mainWindowGrid" Loaded="mainWindowGrid_Loaded">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
@@ -71,7 +71,7 @@
                 FontSize="22" Click="habitStatistics_Click"/>
 
         </StackPanel>
-        
+
         <Canvas Grid.Row="1" Margin="449,10,-990,-350">
             <ContentControl Content="{Binding}" Height="740" Width="931"/>
         </Canvas>
